@@ -19,13 +19,13 @@ BDRip 的制作流程，大致上可以概括为：抽流 - 压制 - 封装。�
 
 ### (1). BD的抽流
 
-上一章我们讲了 BD 的结构，视频、音频、字幕位于 m2ts 文件中，而章节单独存放在 mpls 文件中。m2ts 的抽流通常使用 eac3to，这是一个由 madshi 编写命令行小工具，没错就是那个 madVR 的 madshi。
+上一章我们讲了 BD 的结构，视频、音频、字幕位于 m2ts 文件中，而章节单独存放在 mpls 文件中。m2ts 的抽流通常使用 eac3to，这是一个由 madshi 编写的命令行小工具，没错就是那个 madVR 的开发者 madshi。
 
 eac3to 有一个方便的 GUI，叫做 HD DVD/Blu-Ray Stream Extractor，它作为一个工具集成在 MeGUI 中。你可以在这里下载 MeGUI：[https://sourceforge.net/projects/megui/](https://sourceforge.net/projects/megui/)。
 
 打开 MeGUI，上方菜单选择 【Tools】-【HD Stream Extractor】。
 
-注意这个 Setting，其实是个按钮，需要勾选上 show encoding option(s)。
+注意这个 Settings，其实是个按钮，需要勾选上 show encoding option(s)。
 
 <img src="./media/image06.png" />
 <img src="./media/image07.png" />
@@ -248,7 +248,7 @@ x264 基本上没得选，基本只能 tmod：[https://github.com/jpsdr/x264/rel
 
 简单来说，如果原盘中为无损音轨，正片和特典的主音轨需要 flac 编码，而评论轨和真人特典的音轨需要 aac 编码；如果原盘中为有损音轨，在码率不太高时保留原样，码率较高时转为 aac 编码。
 
-flac 编码，实际在我们使用 eac3to 抽取时就可以直接抽取并转码为 flac。如果你抽取为 wav，也可以手动转为 flac。
+flac 编码，实际在我们使用 eac3to 抽取时就可以直接抽取并转码为 flac（使用的是最高压缩等级）。如果你抽取为 wav，也可以手动转为 flac。
 
 ```
 flac --compression-level-8 -o output.flac input.wav
@@ -257,17 +257,20 @@ flac --compression-level-8 -o output.flac input.wav
 
 aac 的编码，我们选择 qaac 编码器，模式选择 cvbr，码率根据情况选择 192kbps 或者 320kbps。
 
-为什么选择 cvbr 以及码率为什么选这两个值，并没有什么特别的考虑，只是选择了约定俗成、大家都没有太大异议的一套规范。
+为什么选择 cvbr 以及码率为什么选这两个值，并没有什么特别的考虑，只是选择了约定俗成、大家都没有太大异议的一套规范。当然你也可以选用 tvbr。
 
 qaac 的命令行参数
 ```
 qaac -i -v 192 -q 2 --no-delay -o output.aac input.flac
+qaac -i -V 127 -q 2 --no-delay --ignorelength -o output.m4a input.wav
 ```
--v 参数指定目标码率。
+-v 参数指定 cvbr 模式的目标码率，-V 参数指定 tvbr 模式的目标质量。使用 wav 输入的时候推荐打开  --ignorelength。
 
 你可以在这里下载 qaac：[https://github.com/nu774/qaac/releases](https://github.com/nu774/qaac/releases)。
 
-另外你还需要下载 iTunes 以获得 CoreAudioToolbox 支持。如果你的 qaac 没有 CoreAudioToolbox，它可能无法支持 flac 等格式的输入。
+qaac 依赖于 Apple 的 CoreAudioToolbox 组件，所以你需要安装 iTunes，如果你不想安装 iTunes 的话，可以在 qaac.exe / qaac64.exe 的同目录下建立一个 QTfiles / QTfiles64 文件夹，并在其中放置与之匹配的 32 位 / 64 位依赖。QTFiles 的获取可以使用 [makeportable](https://github.com/nu774/makeportable)，也可以直接下载别人导出完的：[https://github.com/AnimMouse/QTFiles](https://github.com/AnimMouse/QTFiles)。
+
+如果你想让 qaac 支持 flac、WavPack（.wv） 等格式的输入，则需要在根目录放置与 qaac 位数相匹配的依赖，可以参照 [https://github.com/nu774/qaac/wiki/Installation](https://github.com/nu774/qaac/wiki/Installation) 进行配置。以 flac 为例，你可以去 [https://www.rarewares.org/lossless.php](https://www.rarewares.org/lossless.php) 下载一个 libFLAC 的 dll 文件，以 libFLAC_dynamic.dll 或 libFLAC.dll 命名放置在 qaac 的根目录下。
 
 
 最后额外介绍一点 32bit 音轨无损编码内容。
@@ -333,7 +336,7 @@ mp4 推荐使用 L-SMASH 进行封装，总监 EFS 给它写了一个方便的 G
 
 另外 ffmpeg 或者 MeGUI 的 mp4 封装工具也可以用来封 mp4，不过可靠性较差，一般不建议使用。
 
-虽然 L-SMASH 比较可靠，但是其对于源的要求也较高，如果源是由 BD 压制出来的，那么 L-SMASH 是一个最好的选择；如果源是 web 或者录播等，那么使用 L-SMASH 反而可能出错。
+虽然 L-SMASH 比较可靠，但是其对于源的要求也较高，如果源是由 BD 压制出来的，那么 L-SMASH 是一个最好的选择；如果源是 web 或者录播等，那么使用 L-SMASH 反而可能出错。而且 L-SMASH 只支持封装 AVC、HEVC、VC1 的视频编码格式以及 AAC、DTS、E-AC-3、AC-3、MP3 等常规音频编码格式，如果你需要封装 VVC、AV1 等新生编码视频格式或者 OPUS 等音频格式就需要使用其他的 mp4 封装工具了，比如 gpac 的 mp4box，你可以从 [https://www.videohelp.com/software/MP4Box](https://www.videohelp.com/software/MP4Box) 获取。
 
 
 ## 4. 检查
