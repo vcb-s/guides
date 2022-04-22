@@ -206,9 +206,9 @@ vspipe.exe --y4m "xxx.vpy" - | x264.exe --demuxer y4m --output-depth 10 --output
 ```
 y4m 是 YUV4MPEG2 的简称，是一种无压缩的视频格式，它自带了分辨率、帧率、像素格式等有效信息。
 
-x265 编码器，用 --y4m 表示接收格式为 y4m，-D 10 开启 10bit 压制，--output 指定输出文件名。
+x265 编码器，用 `--y4m` 表示接收格式为 y4m，-D 10 开启 10bit 压制，`--output` 指定输出文件名。
 
-x264 编码器，用 --demuxer y4m 表示接收格式为 y4m，--output-depth 10 表示输出 10bit，--output 指定输出文件名。
+x264 编码器，用 `--demuxer y4m` 表示接收格式为 y4m，`--output-depth 10` 表示输出 10bit，`--output` 指定输出文件名。
 
 x265 编码器可以从这里获取编译好的：[https://github.com/AmusementClub/x265/releases](https://github.com/AmusementClub/x265/releases)。
 
@@ -253,7 +253,7 @@ flac 编码，实际在我们使用 eac3to 抽取时就可以直接抽取并转�
 ```
 flac --compression-level-8 -o output.flac input.wav
 ```
---compression-level-8 指定压缩等级为最高（8），-o 指定输出文件名。更详细的命令行参数可以查阅文档：[https://xiph.org/flac/documentation_tools_flac.html](https://xiph.org/flac/documentation_tools_flac.html)。
+`--compression-level-8` 指定压缩等级为最高（8），`-o` 指定输出文件名。更详细的命令行参数可以查阅文档：[https://xiph.org/flac/documentation_tools_flac.html](https://xiph.org/flac/documentation_tools_flac.html)。
 
 aac 的编码，我们选择 qaac 编码器，模式选择 cvbr，码率根据情况选择 192kbps 或者 320kbps。
 
@@ -264,7 +264,7 @@ qaac 的命令行参数
 qaac -i -v 192 -q 2 --no-delay -o output.aac input.flac
 qaac -i -V 127 -q 2 --no-delay --ignorelength -o output.m4a input.wav
 ```
--v 参数指定 cvbr 模式的目标码率，-V 参数指定 tvbr 模式的目标质量。使用 wav 输入的时候推荐打开  --ignorelength。
+`-v` 参数指定 cvbr 模式的目标码率，`-V` 参数指定 tvbr 模式的目标质量。使用 wav 输入的时候推荐打开  `--ignorelength`。
 
 你可以在这里下载 qaac：[https://github.com/nu774/qaac/releases](https://github.com/nu774/qaac/releases)。
 
@@ -321,7 +321,7 @@ mkvmerge --output {output_file} \
          --language 0:jpn --default-track 0:no --track-name "0:Audio Commentary" {audio2_file} \
          --chapters {chapter_file}
 ```
-其中 --language 设置轨道语言，前面的 0 指定输入文件的轨道 id，这里每个输入文件都是只含有一个轨道，因此只有 0。如果输入文件是 mkv 这样有多条轨道的文件，通过 id 选择需要处理的轨道。--default-track 设置默认轨道，需要注意的是，新版本的 mkvmerge 默认所有轨道都是默认轨道（旧版本是默认否），因此对于需要设置为否的轨道，也要显示指定为否。--track-name 设置轨道名称，对于多音轨情况可以选择性地命名来进行区分。
+其中 `--language` 设置轨道语言，前面的 0 指定输入文件的轨道 id，这里每个输入文件都是只含有一个轨道，因此只有 0。如果输入文件是 mkv 这样有多条轨道的文件，通过 id 选择需要处理的轨道。`--default-track` 设置默认轨道，需要注意的是，新版本的 mkvmerge 默认所有轨道都是默认轨道（旧版本是默认否），因此对于需要设置为否的轨道，也要显示指定为否。`--track-name` 设置轨道名称，对于多音轨情况可以选择性地命名来进行区分。
 
 更多的设置和详细参数请查阅 mkvmerge 文档。
 
