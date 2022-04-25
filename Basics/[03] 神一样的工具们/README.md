@@ -42,6 +42,8 @@ eac3to 有一个方便的 GUI，叫做 HD DVD/Blu-Ray Stream Extractor，它作�
 
 原盘的音轨有 PCM / TrueHD / DTS-HD MA 等无损格式，也有 AC3 / DTS 等有损格式。按照 VCB-Studio 规范，对于无损音轨，提取为 flac 格式；对于有损音轨，提取为原本格式。
 
+需要注意一点，TrueHD / DTS-HD MA 音轨往往存在一个内嵌的 AC3 / DTS core 有损音轨，这是为了给不兼容 TrueHD / DTS-HD MA 的设备提供向下兼容。这导致很多时候 MediaInfo 只认出一条音轨，而播放器会认出两条。对于这种情况，直接丢弃有损部分即可。
+
 #### 字幕的抽取
 
 原盘有时会有 PGS 图形字幕，抽取为 sup 即可。
@@ -77,6 +79,18 @@ eac3to 00000.m2ts 1: 00000.h264
 抽取音轨，可以直接抽取为 flac，也可以抽取为 wav。
 ```
 eac3to 00000.m2ts 2: 00000.flac
+```
+对于 TrueHD / DTS-HD MA 音轨且带有有损 core 时，可以通过如下命令抽取无损部分。
+```
+eac3to 00000.m2ts 2: 00000.thd
+
+eac3to 00000.m2ts 2: 00000.dtsma
+```
+而有损部分可以通过 `-core` 参数抽取。
+```
+eac3to 00000.m2ts 2: 00000.ac3 -core
+
+eac3to 00000.m2ts 2: 00000.dts -core
 ```
 抽取字幕，注意 PGS 字幕的后缀为 sup。
 ```
