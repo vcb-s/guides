@@ -291,7 +291,7 @@ qaac 依赖于 Apple 的 CoreAudioToolbox 组件，所以你需要安装 iTunes�
 
 普通无损音轨位深为 16bit，Hi-Res 常见为 24bit，而一些最新的 Hi-Res 则有 32bit。32bit 又分为 32 位整数和 32 位浮点。幸运的是，目前蓝光原盘里我们还看不到这些烦人的 32bit 音轨。
 
-flac 虽然有对 32 位整数格式的规范，但并没有编码器实现，至于 32 位浮点则完全不支持。
+flac 虽然有对 32 位整数格式的规范，~但并没有编码器实现~ 在 1.4.0 版本之后增加了对 32 位整数的编解码支持，至于 32 位浮点则完全不支持。
 
 qaac 支持 alac 无损编码，能够支持 32 位整数格式的编解码，编码命令请自行查阅 qaac 文档。
 
@@ -485,7 +485,7 @@ MKVToolNix 除了按章节切割，也支持按帧切割。切割模式选择【
 
 <img src="./media/image27.png" />
 
-以这个章节为例，如果我们想切出 Chapter 02 到 Chapter 03，那么实际需要的帧为 2638-4795，最后别忘了整体加 1，应该填写 2639-4795。
+以这个章节为例，如果我们想切出 Chapter 02 到 Chapter 03，那么实际需要的帧为 2638-4794，最后别忘了整体加 1，应该填写 2639-4795。
 
 与按章节切割类似，如果你指定的首尾帧号不是关键帧，那么会自动移动到最近的关键帧作为实际切点。
 
@@ -498,7 +498,7 @@ MKVToolNix 除了按章节切割，也支持按帧切割。切割模式选择【
 flac -d -o output.wav input.flac
 ```
 
-音频的切割并不依赖于关键帧，我们可以使用 ffmpeg 对其进行精准到毫秒（实际是精确到 sample）的切割。
+音频的切割并不依赖于关键帧，我们可以使用 ffmpeg 对其进行精准到毫秒（实际是精确到 sample 量级）的切割。
 ```
 ffmpeg -y -i {input_audio} -map a:0 -ss {trim_begin} -to {trim_end} -acodec copy -y {output_audio}
 ```
@@ -506,7 +506,7 @@ ffmpeg -y -i {input_audio} -map a:0 -ss {trim_begin} -to {trim_end} -acodec copy
 
 一些音频编码器，比如 flac、qaac 也支持对输入音频的一部分进行编码而不用提前切割，具体参数设置可以自行查阅文档。
 
-如果切割 aac 音轨，输出最好选用 mka，以避免切割产生的 delay 造成影响。
+如果切割 aac 音轨，其最小独立单元不是 1 个 sample 而是 1024 个 sample，因此输出最好选用 mka，以避免切割产生的 delay 造成影响。
 
 
 ## 6. 练习
