@@ -1,0 +1,42 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "vspreview",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}",
+            "args": [
+                "-m",
+                "vspreview",
+                "\"'${file}'\"",
+            ]
+        },
+        {
+            "label": "vsinfo",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}/../vspipe",
+            "args": [
+                "-i",
+                "\"'${file}'\"",
+            ]
+        },
+        {
+            "label": "vsbench",
+            "type": "shell",
+            "command": "${command:python.interpreterPath}/../vspipe",
+            "args": [
+                "-p",
+                "\"'${file}'\"",
+                ".",
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "runOptions": {
+                "instanceLimit": 10
+            }
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+[
+    {
+        "key": "ctrl+f5",
+        "command": "workbench.action.tasks.runTask",
+        "args": "vspreview"
+    },  //This array makes "ctrl+f5" work.
+    {
+        "key": "ctrl+f6",
+        "command": "python.execInTerminal"
+    },  //This array makes "ctrl+f6" work.
+    {
+        "key": "ctrl+f7",
+        "command": "workbench.action.tasks.runTask",
+        "args": "vsinfo"
+    },  // vs info
+    {
+        "key": "ctrl+f8",
+        "command": "workbench.action.tasks.runTask",
+        "args": "vsbench"
+    }   // vs bench
+]

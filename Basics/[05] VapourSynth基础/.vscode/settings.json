@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.vpy": "python"
+    },
+    "python.pythonPath": "D:\\Encode\\VapourSynth-C-R57-A4\\python.exe",
+    "python.languageServer": "Pylance",
+}
