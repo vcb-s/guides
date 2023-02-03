@@ -1,14 +1,14 @@
 # 第五章 VapourSynth基础
 
-BDRip 的核心是预处理（Pre-Process），没有经过预处理的画质调教，压片就只是单纯的数据压缩罢了，永远不可能有画质提升。历史上，最早的预处理软件是 AviSynth（简称 AVS），然而由于年代久远，其许多设计理念和功能都有较多缺陷，现在逐步被新一代的预处理软件 VapourSynth（简称 VS）替代。本章就来讲解 VS 的基本构成，介绍预览工具和脚本，并从中学习 VS 基本语法和功能。
+BDRip 的核心是预处理（pre-processing），没有经过预处理的画质调教，压片就只是单纯的数据压缩罢了，永远不可能有画质提升。历史上，最早的预处理软件是 AviSynth（简称 AVS），然而由于年代久远，其许多设计理念和功能都有较多缺陷，现在逐步被新一代的预处理软件 VapourSynth（简称 VS）替代。本章就来讲解 VS 的基本构成，介绍预览工具和脚本，并从中学习 VS 基本语法和功能。
 
 ## 1. VS简介
 
-VapourSynth，简称 VS，官网是 [http://www.vapoursynth.com](http://www.vapoursynth.com)。你可以在 [Github](https://github.com/vapoursynth/vapoursynth/releases)上下载最新版本，包括安装版和便携版。
+VapourSynth，简称 VS，官网是 [https://www.vapoursynth.com](https://www.vapoursynth.com)。你可以在 [Github](https://github.com/vapoursynth/vapoursynth/releases) 上下载最新版本，包括安装版和便携版。
 
 VCB-Studio 目前使用的 VS 则是娱乐部版，全称 VapourSynth-Classic，简称 VS-C。你可以在[这里](https://github.com/AmusementClub/vapoursynth-classic/releases)下载最新版。
 
-VS-C 源于 VS 社区的一次重大分裂，VS 项目开发者在 R55 引入了全新的 API4，这导致严重的兼容性问题。API4 的 VS 虽然能够同时支持新的 API4 滤镜和旧的 API3 滤镜，但却不支持 API3 脚本，而这些多年传承的脚本才是 VS 发展的精髓，这对于追求稳定生产环境的 VCB-S 来说是不可接受的。
+VS-C 源于 VS 社区的一次重大分裂。VS 项目开发者在 R55 引入了全新的 API4，这导致了严重的兼容性问题：API4 的 VS 虽然能够同时支持新的 API4 滤镜和旧的 API3 滤镜，但却不支持 API3 脚本。而这些多年传承的脚本才是 VS 发展的精髓，这对于追求稳定生产环境的 VCB-S 来说是不可接受的。
 
 另一方面，VS 开发者在 API4 还引入了大量破坏性弃用，以迫使用户和滤镜开发者转向 API4。同时还采取先进的 user driven testing，让普通用户积极参与到新版的验证与反馈工作中。
 
@@ -34,7 +34,7 @@ VS-C 源于 VS 社区的一次重大分裂，VS 项目开发者在 R55 引入了
 
 ### (1). VapourSynth-Editor
 
-预览器在很长时间里只有一个，`VapourSynth-Editor`（简称 vsedit, vse），[https://github.com/AmusementClub/VapourSynth-Editor](https://github.com/AmusementClub/VapourSynth-Editor)。vse 是一个 IDE，可以在里面编写 VS 脚本，并进行预览、测试、调试等。它提供了少量的高光和代码补完功能，但不是很完善，只对滤镜起作用，对脚本函数则没有作用。
+预览器在很长时间里只有一个，`VapourSynth-Editor`（简称 vsedit 或 vse），[https://github.com/AmusementClub/VapourSynth-Editor](https://github.com/AmusementClub/VapourSynth-Editor)。vse 是一个 IDE，可以在里面编写 VS 脚本，并进行预览、测试、调试等。它提供了少量的高光和代码补完功能，但不是很完善，只对滤镜起作用，对脚本函数则没有作用。vse 也没有提供代码的查找与替换功能，使用起来不太方便。
 
 vse 需要依赖 VS 运行，而且原版 vse 优先选择注册表中的 VS 而不是用户指定的 VS，当系统中有多个 VS，或者曾经使用过安装版 VS，那你几乎永远无法知道它使用的是哪个 VS。当然目前娱乐部版已经修复了这个问题，它会优先找同目录的 VS，即开即用。
 
@@ -54,8 +54,8 @@ src8.set_output()
 ```
 
 先看前四句，熟悉 python 的应该知道，这是在载入库。
-第一句载入 vapoursynth 本体，并简称为 vs。
-第二句载入 vs 的 core，core 的概念比较抽象，不妨认为就是一种固定格式。
+第一句载入 vapoursynth 本体，并简称为 `vs`。
+第二句载入 `vs` 的 `core`。`core` 的概念比较抽象，不妨认为就是一种固定格式。
 这里可以换为等价的写法：
 ```python
 core = vs.core
@@ -66,9 +66,9 @@ core = vs.core
 core = vs.get_core()
 ```
 
-这在 VS-C 中仍然能运行，但 get_core 即将弃用，不要这么写。
+这在 VS-C 中仍然能运行，但 `get_core` 即将弃用，不要这么写。
 
-第三四句，载入 mvf（mawen1250写的工具合集）和 haf（holy写的工具合集），这是日常做番最常用到的工具。
+第三四句，载入 `mvf`（mawen1250写的工具合集）和 `haf`（holy写的工具合集），这是日常做番最常用到的工具。
 
 再看后三句，这里细节很多，我们一个一个分析。
 
@@ -76,14 +76,14 @@ core = vs.get_core()
 一般写脚本的时候要避免这种单个字母的无脑命名。
 但本组约定俗成采用 a 代指输入文件，注意在这之后的 OKE 中会用到。
 
-这里使用的是相对路径，需要保证 00010.m2ts 和vpy脚本在同一目录下。
+这里使用的是相对路径，需要保证 00010.m2ts 和 vpy 脚本在同一目录下。
 如果要使用绝对路径，可以这样：`a = R"E:\Anime\00010.m2ts"`。
 这里被 R 引号圈起来的是一个 Raw String，所见即所得，可以避免复杂的转义问题。
 不然你就得写：`"E:\\Anime\\00010.m2ts"`。
 
 第二句 `src8 = core.lsmas.LWLibavSource(a)`，这是使用源滤镜 `lsmas` 载入视频，获取一个在 vs 里称为 clip 的变量，并命名为 `src8`。
 除了文件名之外的变量，一般需要有一定意义，方便解读。
-通常我们用 `src` 指代源，8 表示精度，原盘一般都是 8bit。
+通常我们用 `src` 指代源，8 表示精度，原盘一般都是 8-bit。
 而最后的输出结果，则用 `res` 指代。
 
 从这一行我们也能看出 vs 滤镜的使用规律，是 `core.<package_name>.<filter_name>(...)` 的形式。
@@ -94,7 +94,7 @@ core = vs.get_core()
 
 现在我们尝试使用 vsedit 来运行脚本。
 
-如果你的滤镜载入正确，vsedit 应该可以高亮显示滤镜名称.
+如果你的滤镜载入正确，vsedit 应该可以高亮显示滤镜名称。
 在上方工具栏选择 `Script - Check script`，或者按 `F6`，就可以检查脚本是否能正常输出。
 如果是第一次读取某个视频文件，LWLibavSource 会生成一个后缀为 `lwi` 的索引文件，便于以后再次读取视频。
 源文件越大，需要的时间越多，对于好几个 GB 的蓝光原盘需要等待几分钟。SSD 硬盘的话会快很多。
@@ -111,7 +111,7 @@ core = vs.get_core()
 
 注意 vs 里帧数是 0-indexed 的，比如这个视频的帧数就是 0-16711，一共 16712 帧。
 帧率 24000/1001=23.976，这个数字要牢记，这是日本动画的典型帧率。
-最后像素格式 YUV420P8，说明这是 YUV 色彩空间，420 下采样，数据位深为 8bit。
+最后像素格式 YUV420P8，说明这是 YUV 色彩空间，420 下采样，数据位深为 8-bit。
 
 检查完了这些，就可以用 `Script - Preview`，或者按 `F5` 来预览实际画面。
 
@@ -149,18 +149,18 @@ res.set_output()
 所以 LWILibavSource 读取源的时候，是准确的读取了源的全部精度。
 
 当然实际上 vsedit 渲染时，还是采用 RGB24，这可以利用取色器看到。
-这是合理的，因为大部分人的显示器仍然还是 8bit。
+这是合理的，因为大部分人的显示器仍然还是 8-bit。
 
-因此我们预览输出时，习惯是无论什么精度的源，都输出 8bit RGB。
+因此我们预览输出时，习惯是无论什么精度的源，都输出 8-bit RGB。
 这可以通过 `res = mvf.ToRGB(src8, depth=8)` 或者 `res = mvf.Preview(src8)` 来实现。
 这也是日常截图最标准的方法。
 
 
 ### (2). VapourSynth-Preview
 
-`VapourSynth-Preview`（简称 vspreview, vsp）是近两年兴起的另一个预览器，区别于 vsedit 的独立程序，vsp 是由 python 编写的模块，因此可以直接集成到 python 环境中。
+`VapourSynth-Preview`（简称 vspreview 或 vsp）是近两年兴起的另一个预览器，区别于 vsedit 的独立程序，vsp 是由 python 编写的模块，因此可以直接集成到 python 环境中。
 
-vsp 的初始 repo 已经不再维护，因此目前版本繁多。我们使用的娱乐部版（也是 portable 包中集成的版本）：[https://github.com/AkarinVS/vapoursynth-preview](https://github.com/AkarinVS/vapoursynth-preview)。另一个活跃的版本，iew 版：[https://github.com/Irrational-Encoding-Wizardry/vs-preview](https://github.com/Irrational-Encoding-Wizardry/vs-preview)。
+vsp 的初始 repo 已经不再维护，因此目前版本繁多。我们使用的娱乐部版（也是 portable 包中集成的版本）：[https://github.com/AkarinVS/vapoursynth-preview](https://github.com/AkarinVS/vapoursynth-preview)。另一个活跃的版本是 iew 版：[https://github.com/Irrational-Encoding-Wizardry/vs-preview](https://github.com/Irrational-Encoding-Wizardry/vs-preview)。
 
 注意 iew 版与 VapourSynth-Classic 并不完全兼容，如果你有兴趣尝试一些新功能，可以使用这个兼容 VS-C 的版本：[https://github.com/SaltyChiang/vs-preview/tree/no-vstools](https://github.com/SaltyChiang/vs-preview/tree/no-vstools)。
 
@@ -189,7 +189,6 @@ python -m vspreview xxx.vpy
 以上，我们就配置好了全部所需内容。现在使用 VSCode 打开 vpy 脚本（或者所在文件夹），如果配置成功，可以看到脚本高亮和语法补全信息。接下来可以使用 `Ctrl+F6/Ctrl+F5` 进行类似 vsedit 的 F6/F5 的脚本检查/预览。不过这里的脚本检查只检查是否正常运行，不提供 vsedit 那样的 clip 信息。
 
 我们的配置还提供了额外两个功能：`Ctrl+F7`，相当于 vs info，打印输出 clip 的信息；`Ctrl+F8`，相当于 vs benchmark，计算输出 clip 的所有帧，可以测试脚本速度。
-
 
 vsp 的基本功能与 vsedit 差别不大，但更加易于使用。
 
@@ -284,8 +283,7 @@ vsedit 的输出节点与键盘数字是绑定的，也就是最多只能有 0-9
 当然，你可以输出到更高数字的节点，脚本仍然可以运行，但无法在 vsedit 中预览到。
 
 作为多节点输出的开创者，vsp 对这一功能的支持更加完善。
-vsp 的输出节点不与键盘数字绑定，而是按照脚本中 set_output 出现的先后顺序，依次对应到键盘数字：1、2、3...
-同时也不要求一定有 0 节点输出。
+vsp 的输出节点不与键盘数字绑定，而是按照脚本中 set_output 出现的先后顺序，依次对应到键盘数字：1、2、3...同时也不要求一定有 0 节点输出。
 
 不使用键盘数字 0 作为第一个可以优化没有小键盘时的体验，输出节点数字不绑定快捷键可以避免不停修改节点值。当然 vsp 也不支持过多的节点数，超过 10 个节点只能在左下角的下拉框中切换。不过你可以自行修改 vsp 的配置，因为它是一个 python module，你可以自由修改其功能，比如绑定节点数字，比如扩展更多键位。
 
@@ -300,8 +298,7 @@ res.set_output(2)
 ```
 
 可以发现输出帧率翻倍，帧率也翻倍，变成了 47.952 fps。
-实际上滤镜是在一秒内把源和成品的帧都给塞进去了，偶数帧（0, 2, 4...）来自源，奇数帧（1, 3, 5...）来自成品。
-这样可以通过前后键，反复观察源和成品的画面区别。
+实际上滤镜是在一秒内把源和成品的帧都给塞进去了，偶数帧（0, 2, 4...）来自源，奇数帧（1, 3, 5...）来自成品。这样可以通过前后键，反复观察源和成品的画面区别。
 
 Interleave 支持输入一个 clip 列表，把里面的 clip 依次交错输出。自然你也可以将多个 clip 一起交错对比，但是多于两个的时候有诸多不便，首先你无法直观从帧号判断这帧来自哪个 clip，其次越过一些帧对比，比如将 1 和 3 进行对比时无法快速切换。
 当然现在是好时代了，可以通过多节点输出自由地进行对比。
@@ -459,7 +456,7 @@ res.set_output(0)
 
 `_Matrix, _Primaries, _Transfer`，需要记住 `"709"=1`，`"601"=6`，其他的用到时查文档。
 
-`_FieldBased`，场类型，0 逐行，1 底场优先，2 顶场优先。这个属性会在之后的 30fps 课程中用到。
+`_FieldBased`，场类型，0 逐行，1 底场优先，2 顶场优先。这个属性会在之后的 30 fps 课程中用到。
 
 
 在实际操作中，我们可以手动更改这些 frame props。
@@ -499,7 +496,7 @@ yuv 和 y4m 都是无压缩的视频数据，区别在于后者自带了分辨�
 ```
 35000 * (1920 * 1080 + 2 * (1920 / 2) * (1080 / 2)) * 8 bit = 108,864,000,000 B ~= 101.3875 GiB
 ```
-如果数据位深为 10bit 或者 16bit，那么每个像素分量占据 2 个字节，计算也是类似的。
+如果数据位深为 10-bit 或者 16-bit，那么每个像素分量占据 2 个字节，计算也是类似的。
 
 3. 只计算各帧但不输出（用于测试脚本速度）
 ```
