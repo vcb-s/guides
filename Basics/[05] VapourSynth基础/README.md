@@ -1,25 +1,25 @@
 # 第五章 VapourSynth基础
 
-BDRip 的核心是预处理（Pre-Process），没有经过预处理的画质调教，压片就只是单纯的数据压缩罢了，永远不可能有画质提升。历史上，最早的预处理软件是 AviSynth（简称 AVS），然而由于年代久远，其许多设计理念和功能都有较多缺陷，现在逐步被新一代的预处理软件 VapourSynth（简称 VS）替代。本章就来讲解VS的基本构成，介绍预览工具和脚本，并从中学习 VS 基本语法和功能。
+BDRip 的核心是预处理（Pre-Process），没有经过预处理的画质调教，压片就只是单纯的数据压缩罢了，永远不可能有画质提升。历史上，最早的预处理软件是 AviSynth（简称 AVS），然而由于年代久远，其许多设计理念和功能都有较多缺陷，现在逐步被新一代的预处理软件 VapourSynth（简称 VS）替代。本章就来讲解 VS 的基本构成，介绍预览工具和脚本，并从中学习 VS 基本语法和功能。
 
 ## 1. VS简介
 
-VapourSynth，简称 VS，官网是 http://www.vapoursynth.com/。你可以在 [Github](https://github.com/vapoursynth/vapoursynth/releases)上下载最新版本，包括安装版和便携版。
+VapourSynth，简称 VS，官网是 [http://www.vapoursynth.com](http://www.vapoursynth.com)。你可以在 [Github](https://github.com/vapoursynth/vapoursynth/releases)上下载最新版本，包括安装版和便携版。
 
-VCB-Studio 目前使用的 VS 则是娱乐部版，全称 VapourSynth-Classic，简称 VSC。你可以在[这里](https://github.com/AmusementClub/vapoursynth-classic/releases)下载最新版。
+VCB-Studio 目前使用的 VS 则是娱乐部版，全称 VapourSynth-Classic，简称 VS-C。你可以在[这里](https://github.com/AmusementClub/vapoursynth-classic/releases)下载最新版。
 
-VSC 源于 VS 社区的一次重大分裂，VS 项目开发者在 R55 引入了全新的 API4，这导致严重的兼容性问题。API4 的 VS 虽然能够同时支持新的 API4 滤镜和旧的 API3 滤镜，但却不支持 API3 脚本，而这些多年传承的脚本才是 VS 发展的精髓，这对于追求稳定生产环境的 VCB-S 来说是不可接受的。
+VS-C 源于 VS 社区的一次重大分裂，VS 项目开发者在 R55 引入了全新的 API4，这导致严重的兼容性问题。API4 的 VS 虽然能够同时支持新的 API4 滤镜和旧的 API3 滤镜，但却不支持 API3 脚本，而这些多年传承的脚本才是 VS 发展的精髓，这对于追求稳定生产环境的 VCB-S 来说是不可接受的。
 
 另一方面，VS 开发者在 API4 还引入了大量破坏性弃用，以迫使用户和滤镜开发者转向 API4。同时还采取先进的 user driven testing，让普通用户积极参与到新版的验证与反馈工作中。
 
-基于以上复杂情况，总监 Akarin 创立了 VSC，同时兼容 API3 与 API4 脚本，全力保证生产环境的向后兼容性。此外 VSC 兼具前后两代 VS 之长，既有 API4 的低内存开销，又有 API3 的高处理速度。
+基于以上复杂情况，总监 Akarin 创立了 VS-C，同时兼容 API3 与 API4 脚本，全力保证生产环境的向后兼容性。此外 VS-C 兼具前后两代 VS 之长，既有 API4 的低内存开销，又有 API3 的高处理速度。
 
-有了 VS 本体，问题还没有完全解决。上述这些 VS 本体只含有少量的内置滤镜，这显然是远远不够的。收集滤镜和常用工具脚本是一件复杂繁琐的事，这里我们提供了一套打包好的便携版 VSC，含有大部分常用滤镜和脚本：[https://github.com/AmusementClub/tools/releases](https://github.com/AmusementClub/tools/releases)。
+有了 VS 本体，问题还没有完全解决。上述这些 VS 本体只含有少量的内置滤镜，这显然是远远不够的。收集滤镜和常用工具脚本是一件复杂繁琐的事，这里我们提供了一套打包好的便携版 VS-C，含有大部分常用滤镜和脚本：[https://github.com/AmusementClub/tools/releases](https://github.com/AmusementClub/tools/releases)。
 
 
-打开 VS 目录，我们可以看到 VS 本体的一堆 dll 和 python 环境。VS 本体和滤镜都是由 C++ 编写，而它暴露给用户的接口则是 python 的。我们可以通过 python 编写 VS 脚本，然后通过 VSPipe 运行脚本获得输出。你可以认为 VS 是 python 的一个库，也可以认为 VS 里含有 python。
+打开 VS 目录，我们可以看到 VS 本体的一堆 dll 和 python 环境。VS 本体和滤镜都是由 C++ 编写，而它暴露给用户的接口则是 python 的。我们可以通过 python 编写 VS 脚本，然后通过 VSPipe 运行脚本获得输出。你可以认为 VS 是 python 的一个库，也可以认为 VS 使用 python 做 dsl (domain specific language) 或者更通俗地讲就是 glue（把滤镜给串联起来）。
 
-`vapoursynth64` 目录下是 VS 滤镜，`coreplugins` 是内置滤镜，`plugins` 是第三方滤镜。对于我们提供的 VSC 包，AI 滤镜相关的模型和运行环境等也放在 `plugins` 目录。
+`vapoursynth64` 目录下是 VS 滤镜，`coreplugins` 是内置滤镜，`plugins` 是第三方滤镜。对于我们提供的 VS-C 包，AI 滤镜相关的模型和运行环境等也放在 `plugins` 目录。
 
 同时，我们提供的包里的 python 还内置了 pip，可以方便地安装额外包。
 
@@ -34,7 +34,7 @@ VSC 源于 VS 社区的一次重大分裂，VS 项目开发者在 R55 引入了�
 
 ### (1). VapourSynth-Editor
 
-预览器在很长时间里只有一个，`VapourSynth-Editor`（简称 vsedit, vse），https://github.com/AmusementClub/VapourSynth-Editor。vse 是一个 IDE，可以在里面编写 VS 脚本，并进行预览、测试、调试等。它提供了少量的高光和代码补完功能，但不是很完善，只对滤镜起作用，对脚本函数则没有作用。
+预览器在很长时间里只有一个，`VapourSynth-Editor`（简称 vsedit, vse），[https://github.com/AmusementClub/VapourSynth-Editor](https://github.com/AmusementClub/VapourSynth-Editor)。vse 是一个 IDE，可以在里面编写 VS 脚本，并进行预览、测试、调试等。它提供了少量的高光和代码补完功能，但不是很完善，只对滤镜起作用，对脚本函数则没有作用。
 
 vse 需要依赖 VS 运行，而且原版 vse 优先选择注册表中的 VS 而不是用户指定的 VS，当系统中有多个 VS，或者曾经使用过安装版 VS，那你几乎永远无法知道它使用的是哪个 VS。当然目前娱乐部版已经修复了这个问题，它会优先找同目录的 VS，即开即用。
 
@@ -66,7 +66,7 @@ core = vs.core
 core = vs.get_core()
 ```
 
-这在 VSC 中仍然能运行，但 get_core 即将弃用，不要这么写。
+这在 VS-C 中仍然能运行，但 get_core 即将弃用，不要这么写。
 
 第三四句，载入 mvf（mawen1250写的工具合集）和 haf（holy写的工具合集），这是日常做番最常用到的工具。
 
@@ -162,7 +162,7 @@ res.set_output()
 
 vsp 的初始 repo 已经不再维护，因此目前版本繁多。我们使用的娱乐部版（也是 portable 包中集成的版本）：[https://github.com/AkarinVS/vapoursynth-preview](https://github.com/AkarinVS/vapoursynth-preview)。另一个活跃的版本，iew 版：[https://github.com/Irrational-Encoding-Wizardry/vs-preview](https://github.com/Irrational-Encoding-Wizardry/vs-preview)。
 
-注意 iew 版与 VapourSynth-Classic 并不完全兼容，如果你有兴趣尝试一些新功能，可以使用这个兼容 VSC 的版本：[https://github.com/SaltyChiang/vs-preview/tree/no-vstools](https://github.com/SaltyChiang/vs-preview/tree/no-vstools)。
+注意 iew 版与 VapourSynth-Classic 并不完全兼容，如果你有兴趣尝试一些新功能，可以使用这个兼容 VS-C 的版本：[https://github.com/SaltyChiang/vs-preview/tree/no-vstools](https://github.com/SaltyChiang/vs-preview/tree/no-vstools)。
 
 vspreview 可以直接通过 pip 安装，参考上述 repo 的说明。目前 portable 包中已经预先安装好，可以通过下述命令使用（注意把 `python` 换成完整路径）：
 
@@ -183,7 +183,7 @@ python -m vspreview xxx.vpy
 #### VapourSynth
 
 1. 安装 VapourSynth-Preview。可参考上述 repo 的说明，如果使用我们的 portable 包则不必再安装。
-2. 安装 [VapourSynth-Plugins-Stub-Generator](https://github.com/SaltyChiang/VapourSynth-Plugins-Stub-Generator)。这是由总监 SaltyChiang 开发的小工具，用于在 VSCode 里支持代码补全。同样，portable 包中已经集成，不必再安装。
+2. 安装 [VapourSynth-Plugins-Stub-Generator](https://github.com/SaltyChiang/VapourSynth-Plugins-Stub-Generator/tree/R57Classic)。这是由总监 SaltyChiang 开发的小工具，用于在 VSCode 里支持代码补全。同样，portable 包中已经集成，不必再安装。
 如果首次安装，运行 `python -m vsstubs install`，如果使用 portable 包，运行 `python -m vsstubs update`。注意以后每次增加滤镜都需要重新 update。
 
 以上，我们就配置好了全部所需内容。现在使用 VSCode 打开 vpy 脚本（或者所在文件夹），如果配置成功，可以看到脚本高亮和语法补全信息。接下来可以使用 `Ctrl+F6/Ctrl+F5` 进行类似 vsedit 的 F6/F5 的脚本检查/预览。不过这里的脚本检查只检查是否正常运行，不提供 vsedit 那样的 clip 信息。
@@ -313,7 +313,7 @@ Interleave 支持输入一个 clip 列表，把里面的 clip 依次交错输出
 
 今后我们将遇到各种各样的滤镜，虽然代码补全可以帮助我们知道它的参数，但具体每个参数的含义和用法，还是需要查阅相关文档。
 
-VSC 的文档链接如下：[https://amusementclub.github.io/doc/](https://amusementclub.github.io/doc/)。
+VS-C 的文档链接如下：[https://amusementclub.github.io/doc/](https://amusementclub.github.io/doc/)。
 
 其中包括 VS 相关的 python 数据结构文档，内置滤镜的文档以及 VSPipe 的用法等。
 
@@ -330,7 +330,7 @@ VSC 的文档链接如下：[https://amusementclub.github.io/doc/](https://amuse
 
 ### (2). 参数传递
 
-VS 中的参数传递有多种方式：关键字传递、位置传递、混合传递。
+VS 中的参数传递有多种方式：关键字传参、位置传参、混合传参。
 
 1. 关键字传参 keyword argument
 
@@ -410,7 +410,8 @@ res = mvf.Preview(core.lsmas.LWLibavSource("00001.m2ts"))
 
 ### (1). 视频属性 clip property
 
-clip 对象，在 VS 里是 VideoNode 类。文档在：[https://amusementclub.github.io/doc/pythonreference.html#VideoNode](https://amusementclub.github.io/doc/pythonreference.html#VideoNode)。
+clip 对象，在 VS 里是 VideoNode 类。
+文档在：[https://amusementclub.github.io/doc/pythonreference.html#VideoNode](https://amusementclub.github.io/doc/pythonreference.html#VideoNode)。
 
 这里常用的就是前几个属性，包括：视频格式 `format`，宽度 `width`，高度 `height`，总帧数 `num_frames`，帧率 `fps` 或者用两个整数表示的 `fps_num` 和 `fps_den`。
 
@@ -429,7 +430,8 @@ res.set_output(0)
 
 ### (2). 帧属性 frame property
 
-除了 clip 对象，还有一个需要关注的，帧对象，在 VS 叫做 VideoFrame 类。文档在：[https://amusementclub.github.io/doc/pythonreference.html#VideoFrame](https://amusementclub.github.io/doc/pythonreference.html#VideoFrame)。
+除了 clip 对象，还有一个需要关注的，帧对象，在 VS 叫做 VideoFrame 类。
+文档在：[https://amusementclub.github.io/doc/pythonreference.html#VideoFrame](https://amusementclub.github.io/doc/pythonreference.html#VideoFrame)。
 
 <img src="./media/image15.png" />
 
@@ -455,7 +457,7 @@ res.set_output(0)
 
 <img src="./media/image18.png" />
 
-`_Matrix, _Primaries, _Transfer`，需要记住 `709=1`，`601=6`，其他的用到时查文档。
+`_Matrix, _Primaries, _Transfer`，需要记住 `"709"=1`，`"601"=6`，其他的用到时查文档。
 
 `_FieldBased`，场类型，0 逐行，1 底场优先，2 顶场优先。这个属性会在之后的 30fps 课程中用到。
 
@@ -467,25 +469,41 @@ res.set_output(0)
 res = core.std.SetFrameProps(res, _Matrix=1)
 res = core.std.RemoveFrameProps(res, "_Matrix")
 ```
+实际上我们可以设置任意名字的 frame props，但它们大部分时候并没有用处。而这些由 VS 保留的 frame props 则有重要功能，一些滤镜比如 `resize`、`fmtc` 会读取它们来决定进行何种计算，如果 frame props 指定的不正确就是产生预料之外的错误结果。
+
+一般来说，对于 1080p 的视频不需要刻意关注 `_Matrix, _Primaries, _Transfer` 等等，它们在未指定或者不存在时，滤镜会自动 fallback 到 709 对应的值。但是在制作 DVD 或者 UHD 等特殊分辨率的视频时，就需要特别关注这些 frame props，确保它们符合相应规范。
 
 
 ## 5. VSPipe的使用
 
-`VSPipe` 是运行脚本，输出视频的核心工具。文档在：[https://amusementclub.github.io/doc/output.html](https://amusementclub.github.io/doc/output.html)。
+`VSPipe` 是运行脚本，输出视频的核心工具。
+文档在：[https://amusementclub.github.io/doc/output.html](https://amusementclub.github.io/doc/output.html)。
 
 1. 输出给 x265 进行压制
 ```
 vspipe.exe --y4m script.vpy - | x265.exe --y4m -D 10 --output "output.hevc" -
 ```
+注意必须在标准命令行 `cmd` 里使用上述 pipe 方式，`PowerShell` 容易出现一些奇怪问题。
 
 2. 输出 y4m 文件
 ```
 vspipe.exe --y4m script.vpy output.y4m
 ```
+当然也可以输出 yuv 文件。
+```
+vspipe.exe script.vpy output.yuv
+```
+
+yuv 和 y4m 都是无压缩的视频数据，区别在于后者自带了分辨率、帧率、像素格式等有效信息，而前者就是单纯的数据。
+事实上我们可以计算 yuv 文件的大小。假设目前有一个 35000 帧，分辨率为 1920x1080，像素格式 YUV420P8 的 yuv 视频，那么它的视频体积为：
+```
+35000 * (1920 * 1080 + 2 * (1920 / 2) * (1080 / 2)) * 8 bit = 108,864,000,000 B ~= 101.3875 GiB
+```
+如果数据位深为 10bit 或者 16bit，那么每个像素分量占据 2 个字节，计算也是类似的。
 
 3. 只计算各帧但不输出（用于测试脚本速度）
 ```
-vspipe.exe script.vpy .
+vspipe.exe -p script.vpy .
 ```
 
 
