@@ -260,9 +260,9 @@ src16 = mvf.Depth(src8, depth=16)
 
 #### VS中的format表示
 
-GRAY 和 RGB 都是采用 `GRAY+X`、`YUV+X` 的形式，这里 X 可以是一个数字，表示整数类型的位宽，也可以是一个字母，表示浮点类型的位宽。H 表示 half，半精度浮点数，fp16。S 表示 single，单精度浮点数，fp32。
+GRAY 和 RGB 都是采用 `GRAY+X`、`RGB+X` 的形式，这里 X 可以是一个数字，表示整数类型的位宽，也可以是一个字母，表示浮点类型的位宽。H 表示 half，半精度浮点数，fp16。S 表示 single，单精度浮点数，fp32。
 
-YUV 则有些区别，采用 `YUV+css+P+X` 的形式。css 表示色度下采样，常见有 444、422、420 等。P 表示三个平面的存放方式为 planar YUV，即三个平面分开存放。最后 X 与 GRAY 和 RGB 相同，可以是代表整型位宽的数字，也可以是代表浮点类型的字母。
+YUV 则有些区别，采用 `YUV+css+P+X` 的形式。css 表示色度下采样，常见有 444、422、420 等。P 表示三个平面的存放方式为 planar，也就是三个平面分开存放。最后 X 与 GRAY 和 RGB 相同，可以是代表整型位宽的数字，也可以是代表浮点类型的字母。
 
 需要注意的是，fmtc 和 mvf.Depth 中指定的 bit 数，默认 16 表示 int 16，而 32 表示 float 32。
 
@@ -507,9 +507,9 @@ core.fmtc.resample(clip, width, height, kernel="lanczos", taps=n)
 
 高斯滤镜，名字来源于其 kernel，这个曲线是按高斯分布（正态分布）画的。
 
-resample 里可以使用 gauss，resize 则没有该滤镜。滤镜有两个参数，`a1` 和 `taps`。`a1` 是 0-100 的实数，与高斯分布的 sigma 相关，越小越模糊。`taps` 指定需要采样的像素范围，由于高斯分布曲线是向两端无限延伸的，因此需要确定实际采样的半径。
+resample 里可以使用 gauss，resize 则没有该滤镜。滤镜有两个参数，`a1` 和 `taps`。`a1` 是 1-100 的实数，与高斯分布的 sigma 相关，越小越模糊。`taps` 指定需要采样的像素范围，由于高斯分布曲线是向两端无限延伸的，因此需要确定实际采样的半径。
 
-gauss 通常用于配合其他滤镜，比如配合 lanczos 做n o-ringing 的放大，这会在后续课程中提到。
+gauss 通常用于配合其他滤镜，比如配合 lanczos 做 no-ringing 的放大，这会在后续课程中提到。
 
 ```python
 core.fmtc.resample(clip, width, height, kernel="gauss", a1=100, taps=n)
