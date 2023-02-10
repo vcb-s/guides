@@ -24,9 +24,11 @@ lwi 文件需要我们特别关注，这是一个文本文件，记录了各帧�
 Index=0,POS=343715,PTS=625,DTS=375,EDI=0
 Key=1,Pic=1,POC=15,Repeat=1,Field=0
 ```
-`PTS` 呈现时间戳，即帧呈现到屏幕上的时间；`DTS` 解码时间戳，即解码器必须解码这一帧的时间。这两者的单位都是毫秒，因此你可以通过 PTS 和视频帧率，算出每一帧对应的帧号。lwi 中各帧按照 DTS 从小到大排列。  
+`PTS` 呈现时间戳，即帧呈现到屏幕上的时间；`DTS` 解码时间戳，即解码器必须解码这一帧的时间。这两者的单位取决于 lwi 开头部分的 TimeBase 参数，1/1000 表示单位为 1 毫秒，因此你可以通过 PTS 和视频帧率，算出每一帧对应的帧号。lwi 中各帧按照 DTS 从小到大排列。  
 `KEY` 表示是否为关键帧 IDR，1 代表是 IDR，可以从这帧开始独立解码。`Pic` 表示帧类型，1 代表 I 帧，2 代表 P 帧，3 代表 B 帧。
 根据 lwi 的帧信息我们可以判断 GOP，从一个 KEY=1 的 IDR（含）到下一个 KEY=1 的 IDR（不含）就为一个 GOP。
+
+严格来说 KEY=1 表示 RAP（random access point），比 IDR 更进一步，表示可以从这帧开始完全重新解码。IDR 表示后续的帧不会再依赖前面的帧，但是并不保证不需要前面的数据。实际解码中，除了帧数据还有一些全局或半全局的参数，学名 VPS（video parameter set）和 SPS（sequence parameter set），它们为编码器提供一些必要的设置参数。lwi 的 key=1 说的是包括了 SPS 的 IDR 帧，因此可能发现有些 IDR 帧是 Key=0。
 
 
 ### (2). ffms2
@@ -246,7 +248,9 @@ resize，VS 的内置滤镜，文档在这里：[https://amusementclub.github.io
 ```python
 src16 = core.resize.Bicubic(src8, format=vs.YUV420P16)
 ```
-resize 可以通过 `range` 和 `range_in` 参数（在 resize 中没有 in 后缀的参数都是指输出，有 in 后缀指输入）显式指定输入和输出的 range。与 fmtc 不同，在未指定 range 时，resize 会优先通过 frameprops 来决定 range。
+resize 可以通过 `range` 和 `range_in` 参数显式指定输入和输出的 range。与 fmtc 不同，在未指定 range 时，resize 会优先通过 frameprops 来决定 range。
+
+顺便一提，在 resize 的参数中，有 `_in` 后缀的指输入，没有 `_in` 后缀的都是指输出，这些参数都通过一个 magic number 来指定。同时，resize 还提供了一套 `_s` 后缀的参数，可以使用字符串来指定。对于 range、matrix 这类需要指定 magic number 的参数，我们都强烈建议使用字符串形式，或者使用 magic number 对应的 enum 来指定，以提高脚本的可读性，防止出错。
 
 除了直接使用以上两个滤镜，还可以通过 `mvf` 中的 wrapper 来进行转换。
 ```python
@@ -254,10 +258,18 @@ src16 = mvf.Depth(src8, depth=16)
 ```
 在未显示指定 `fulls` 和 `fulld` 时，`mvf.Depth` 通过输入视频格式来猜测 range，对于 YUV 和 GRAY，总是猜测为 limited，其他格式为 full。
 
+#### VS中的format表示
+
+GRAY 和 RGB 都是采用 `GRAY+X`、`YUV+X` 的形式，这里 X 可以是一个数字，表示整数类型的位宽，也可以是一个字母，表示浮点类型的位宽。H 表示 half，半精度浮点数，fp16。S 表示 single，单精度浮点数，fp32。
+
+YUV 则有些区别，采用 `YUV+css+P+X` 的形式。css 表示色度下采样，常见有 444、422、420 等。P 表示三个平面的存放方式为 planar YUV，即三个平面分开存放。最后 X 与 GRAY 和 RGB 相同，可以是代表整型位宽的数字，也可以是代表浮点类型的字母。
+
+需要注意的是，fmtc 和 mvf.Depth 中指定的 bit 数，默认 16 表示 int 16，而 32 表示 float 32。
+
 
 ### (2). 降精度与Dither
 
-经过一系列高精度的处理，在最后输出给编码器时，我们需要将精度降为 8bit 或者 10bit。通过之前的转换公式我们知道，从高精度降为低精度时，多个多精度值会被转为同一个低精度值，这样在相邻颜色间就会形成明显的分界线，或者说色带。
+经过一系列高精度的处理，在最后输出给编码器时，我们需要将精度降为 8bit 或者 10bit。通过之前的转换公式我们知道，从高精度降为低精度时，多个高精度值会被转为同一个低精度值，这样在相邻颜色间就会形成明显的分界线，或者说色带。
 
 为了效果明显，我们使用 8bit 降为 4bit 来展现这一过程，这里使用 round（四舍五入）来处理。
 ```python
@@ -271,7 +283,7 @@ src4 = mvf.Depth(src8, depth=4, dither=1)
 为了解决这种色带问题，很自然的想法是，加点噪声，让相邻颜色之间的台阶看起来没那么陡峭。  
 这种引入类似噪声的方法，就称作抖动（dither）。
 
-最简单的抖动算法，`ordered dither`，又叫贝叶斯矩阵，在 fmtc 和 mvf 里是 `dmode=0`。
+最简单的抖动算法，`ordered dither`，又叫 Bayer matrix，在 fmtc 和 mvf 里是 `dmode=0`。
 
 <img src="./media/image04.png" />
 
@@ -297,7 +309,7 @@ fmtc 中提供了很多 error diffusion 的变体，差别不大，一般使用 
 
 Resizer 是滤镜中的瑞士军刀，它能处理多种基础视频操作，也在一些高级处理手段中发挥重要作用，这些我们会在后续章节中逐渐看到。在本章我们仅关注 Resizer 最基本的用法，视频缩放。
 
-VS中使用 resizer 有 fmtc 和 zimg 两个工具，前者是使用 `fmtc.resample` 滤镜，后者是使用 VS 自带的 `resize.*` 系列滤镜。
+VS 中使用 resizer 有 fmtc 和 zimg 两个工具，前者是使用 `fmtc.resample` 滤镜，后者是使用 VS 自带的 `resize.*` 系列滤镜。
 
 https://amusementclub.github.io/doc/functions/video/resize.html
 
@@ -464,12 +476,12 @@ core.fmtc.resample(clip, width, height, kernel="lanczos", taps=n)
 
 高斯滤镜，名字来源于其 kernel，这个曲线是按高斯分布（正态分布）画的。
 
-resample 里可以使用 gauss，resize 则没有该滤镜。滤镜有一个参数，通过 `a1` 指定，和高斯分布的 sigma 相关，越小越模糊。
+resample 里可以使用 gauss，resize 则没有该滤镜。滤镜有两个参数，`a1` 和 `taps`。`a1` 是 0-100 的实数，与高斯分布的 sigma 相关，越小越模糊。`taps` 指定需要采样的像素范围，由于高斯分布曲线是向两端无限延伸的，因此需要确定实际采样的半径。
 
 gauss 通常用于配合其他滤镜，比如配合 lanczos 做n o-ringing 的放大，这会在后续课程中提到。
 
 ```python
-core.fmtc.resample(clip, width, height, kernel="gauss", a1=sigma)
+core.fmtc.resample(clip, width, height, kernel="gauss", a1=100, taps=n)
 ```
 
 #### nnedi3
@@ -530,3 +542,4 @@ libass 系字幕滤镜没得选，只有 `assrender`：[https://github.com/Amuse
 ```python
 assrender.TextSub(clip clip, string file, [string vfr, int hinting=0, float scale=1.0, float line_spacing=1.0, float dar, float sar, bool set_default_storage_size=True, int top=0, int bottom=0, int left=0, int right=0, string charset, int debuglevel, string fontdir="", string srt_font="sans-serif", string colorspace])
 ```
+顺带一提，assrender 可以设置 `fontdir` 参数，从指定目录获取字体，而 VSF 必须安装字体才能渲染。
