@@ -266,6 +266,37 @@ YUV 则有些区别，采用 `YUV+css+P+X` 的形式。css 表示色度下采样
 
 需要注意的是，fmtc 和 mvf.Depth 中指定的 bit 数，默认 16 表示 int 16，而 32 表示 float 32。
 
+#### YUV overflow / underflow
+
+通常我们遇到的 YUV 视频都是 limited range，但如果有这样一个视频，其内容是 full range 的，却被标成了 limited range，会发生什么？  
+这时超过 limited range 范围的部分将被截断在 limited range 的极值上，全部变成一种颜色，分辨不出其中的细节了。
+
+这种现象就被称为 YUV 越界，又叫 YUV overflow / underflow。超过最大值，称为上溢，overflow；超过最小值，称为下溢，underflow。  
+实际中上溢和下溢可以同时发生，也可以分别独立发生。一般来说，上溢单独发生的情况要远多于其他情况。
+
+在VS中，我们通常用 `core.hist.Levels()` 滤镜观察是否发生越界。
+
+```python
+res = core.hist.Levels(src8)
+res.set_output(0)
+```
+可以看到，在画面的右侧出现了三个直方图，从上到下分别表示 YUV 三个平面的像素值分布情况。每个直方图的横坐标是像素值，从左到右是 0 到 255；纵坐标是该值对应的像素数量。
+
+图像中间没有阴影的区域，表示 limited range，两端的阴影区域，表示超过 limited range 的区域。如果我们发现，直方图超出中间而到达两端的区域，就说明发生了越界。
+
+在原盘的 OP 和 ED 部分，可能会有少量越界，这大多是后期添加的 staff 字幕带来的，白色字幕可能会越界几个像素，到达 240 左右。这种情况一般不需要处理，事实上我们反而会利用字幕颜色越界的特性来框选它们。
+
+对于现在的新番，YUV 越界很少在动画正片中出现，但是时常在三次元特典中发生，一般习惯拿到三次元特典上来先检查 YUV 范围。如果发现视频中大段出现亮度越界的现象，那就需要提起注意，这个视频很可能有 range 问题。
+
+判断确实发生了越界，就需要进行处理，将数据范围从 full 压缩到 limited。为了保证这一操作的精度，通常会在 16bit 下进行。在 VS 中，`Levels` 滤镜专门用来处理越界问题。
+
+假设一个视频发生了亮度 overflow，可以使用以下方式修复：
+```python
+src16 = core.fmtc.bitdepth(src8, bits=16)
+src16 = core.std.Levels(src16, min_in=16 << 8, max_in=255 << 8, min_out=16 << 8, max_out=235 << 8, planes=0)
+```
+当然，实际情况中你需要分别判断 overflow 和 underflow 是否发生，并找到它们溢出的最大值。
+
 
 ### (2). 降精度与Dither
 
