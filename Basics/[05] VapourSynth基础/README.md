@@ -527,4 +527,4 @@ vspipe.exe -p script.vpy .
 
 ### (2)
 
-阅读文档并学习以下滤镜的用法：`BlankClip, AddBorders, StackVertical, StackHorizontal, AssumeFPS, Minimum, Maximum, Reverse, Transpose, Turn180`。
+阅读文档并学习以下滤镜的用法：`BlankClip, StackVertical, StackHorizontal, AssumeFPS, Minimum, Maximum, Reverse, Transpose, Turn180`。
