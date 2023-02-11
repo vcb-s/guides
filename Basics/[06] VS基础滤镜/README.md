@@ -75,13 +75,13 @@ std.Trim(clip, first, last)
 ```
 如果你写 `std.Trim(clip, 0, 100)`，那么会切出 0-100 总共 100-0+1=101 帧。
 
-在 python 里还可以使用`[]`的语法糖来进行切割，写法是`[first: last+1]`，注意这里是左闭右开。  
+在 python 里还可以使用 `[]` 的语法糖来进行切割，写法是 `[first: last+1]`，注意这里是左闭右开。  
 如果你写 `clip[0: 100]`，那么会切出 0-99 总共 100-0=100 帧。
 
 
 https://amusementclub.github.io/doc/functions/video/splice.html
 
-与切割相对的是合并 Slice，通过下面方式使用。一般要求它们的属性全部一致，包括画面大小，像素类型。帧率可以不一致，不过 VS 处理可变帧率是个麻烦事，后续章节会讲。
+与切割相对的是合并 Splice，通过下面方式使用。一般要求它们的属性全部一致，包括画面大小，像素类型。帧率可以不一致，不过 VS 处理可变帧率是个麻烦事，后续章节会讲。
 ```python
 std.Splice([clip1, clip2, clip3])
 ```
@@ -175,7 +175,7 @@ clipV.set_output(3)
 以 `clipU` 为例，`planes=[0, 0, 2]` 表示输出有 3 个平面，第一个平面取自 mid 的 0 平面，第二个平面取自 U 的 0 平面，第三个平面取自 mid 的 2 平面。
 
 这种用法也允许 clips 的元素数量少于 planes 元素数量，此时 clips 将会由其最后一个元素填充至与 planes 元素数量相等。如下面这个例子中，`clips=[Y, mid]`，实际等价于 `[Y, mid, mid]`。  
-另外，观察这个 `clipY` 结果会发现与单独预览Y的结果一致，因此实际中观察 Y 的效果只需抽取单个平面即可。
+另外，观察这个 `clipY` 结果会发现与单独预览 Y 的结果一致，因此实际中观察 Y 的效果只需抽取单个平面即可。
 
 ```python
 clipY = core.std.ShufflePlanes([Y, mid], [0, 1, 2], vs.YUV)
@@ -274,7 +274,7 @@ YUV 则有些区别，采用 `YUV+css+P+X` 的形式。css 表示色度下采样
 这种现象就被称为 YUV 越界，又叫 YUV overflow / underflow。超过最大值，称为上溢，overflow；超过最小值，称为下溢，underflow。  
 实际中上溢和下溢可以同时发生，也可以分别独立发生。一般来说，上溢单独发生的情况要远多于其他情况。
 
-在VS中，我们通常用 `core.hist.Levels()` 滤镜观察是否发生越界。
+在 VS 中，我们通常用 `core.hist.Levels()` 滤镜观察是否发生越界。
 
 ```python
 res = core.hist.Levels(src8)
