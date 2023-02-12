@@ -295,7 +295,7 @@ res.set_output(0)
 src16 = core.fmtc.bitdepth(src8, bits=16)
 src16 = core.std.Levels(src16, min_in=16 << 8, max_in=255 << 8, min_out=16 << 8, max_out=235 << 8, planes=0)
 ```
-当然，实际情况中你需要分别判断 overflow 和 underflow 是否发生，并找到它们溢出的最大值。
+当然，实际情况中你需要分别判断 overflow 和 underflow 是否发生，并找到它们溢出的最大值、最小值来确定 max_in 和 min_in。
 
 
 ### (2). 降精度与Dither
@@ -445,7 +445,7 @@ core.fmtc.resample(clip, width, height, kernel="point")
 
 #### Bilinear
 
-`bilinear`，中文名双线性。它分别对x和y方向各做了一次线性插值，因此得名双线性。观察 kernel 可以看出其线性的性质，同时可以看出它是 `1-taps` 的。
+`bilinear`，中文名双线性。它分别对 x 和 y 方向各做了一次线性插值，因此得名双线性。观察 kernel 可以看出其线性的性质，同时可以看出它是 `1-taps` 的。
 
 双线性特点是计算快，不那么锐利，有些锯齿，没有 ringing，各方面比较平庸。
 
@@ -494,7 +494,7 @@ core.fmtc.resample(clip, width, height, kernel="spline36")
 
 `lanczos` 系列，taps 也是可调的。如果一个 lanczos 是 n-taps 的那么它叫 `lanczos(n)`。
 
-lanczos 较为锐利，通常也会带来比较重的 ringing。过去常用 lanczos4 配合 non-ringing 用于放大。
+lanczos 较为锐利，通常也会带来比较重的 ringing。过去常用 lanczos4 配合 no-ringing 用于放大。
 
 在 resize 函数中通过 `filter_param_a` 指定 taps，在 resample 函数中通过 `taps` 参数指定 taps。
 
