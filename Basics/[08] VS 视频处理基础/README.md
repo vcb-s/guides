@@ -418,10 +418,16 @@ res = core.std.MergeDiff(nr16,diff)
 
 综合以上，在`thr=0.5, elast=2.0`时，我们可以画出这个图：
 
-![Figure 16](./Figure/LimitFilter.png)
+![Figure 16](./Figure/LimitFilter_0.5_2.png)
 
 可以看到在`thr=0.5, elast=2.0`下。滤镜保证 $final-src<=0.5$。
+
 $elast <= 2$ 的时候，有个很巧的结论，就是 $|final - src| <= thr$。如果调整后出现 $|final - src| > thr$，则一定是 $elast > 2$ 才会出现。（你可以通过一些简单的计算证明这个结论）
+
+这里再贴上一些不同参数下的曲线以供比较：
+
+![Figure 17](./Figure/LimitFilter_Combined.png)
+
 
 除此之外，LimitFilter还有一些例如`ref`的参数，因为一般用不到且原理大差不差，就不交代了，下面给出`mvf.LimitFilter`的完整计算过程。
 ```
