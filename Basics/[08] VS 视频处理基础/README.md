@@ -408,7 +408,7 @@ res = core.std.MergeDiff(nr16,diff)
 ## 4.LimitFilter
 上一节提到，Repair根据周边像素的相对大小来限制 ref 和 src 的区别不能过大。LimitFilter则是比较像素本体数值，跟一个阈（yù）值，以及允许的弹性程度作比较。最早来自于avs的dither package，现在则是一般用`mvf.LimitFilter`。用法`mvf.LimitFilter(flt, src, thr, elast)`。其中， `flt` 是要处理的clip；`src`是原始的clip；`thr`是一个阈值，表示8bit下，flt 和 src 可以差别多大。通常取值在0.5~3.0左右，表示8bit下允许偏移这么多。小数不用担心，内部运算精度是16bit的；`elast`，是弹性值，我们随后说。
 
-这里举个简单例子来说明它的作用表现，假设src的某个像素是50,
+这里举个简单例子来说明它的作用表现，假设src的某个像素是50,`thr=0.5, elast=2.0`:
 
 1. $|flt-src|<=thr$，直接保留。比如说 flt=49.8 或者 50.4，那么不做调整；
 2. $|flt-src|>thr\times elast$，直接取值 src。比如说 flt=48.9 或者 51.7，那么直接设置为 50；
@@ -420,7 +420,7 @@ res = core.std.MergeDiff(nr16,diff)
 
 ![Figure 16](./Figure/LimitFilter_0.5_2.png)
 
-可以看到在`thr=0.5, elast=2.0`下。滤镜保证 $final-src<=0.5$。
+可以看到在`thr=0.5, elast=2.0`下。滤镜保证 $|final-src|<=0.5$。
 
 $elast <= 2$ 的时候，有个很巧的结论，就是 $|final - src| <= thr$。如果调整后出现 $|final - src| > thr$，则一定是 $elast > 2$ 才会出现。（你可以通过一些简单的计算证明这个结论）
 
