@@ -55,6 +55,7 @@ OKE 读取这个 tag，压制的时候将其替换为 `None`，保证压制时�
 
 加载名为 custom.py 的脚本：
 ```py
+import sys
 import os
 
 #OKE:PROJECTDIR
@@ -65,6 +66,7 @@ import custom
 
 加载名为 `libcustom.dll` 的滤镜：
 ```py
+import sys
 import os
 
 #OKE:PROJECTDIR
@@ -90,15 +92,16 @@ core.max_cache_size = 8000
 `num_threads` 指定运行时的线程。  
 `max_cache_size` 指定运行时的内存。  
 
-但是前者实际没有用，指定了也不会按这个线程数。
+前者现在不推荐指定，让 VS 自己管理线程池比较好一点。
 
 后者，在 VS API4 时代，已经不需要手动指定内存，都是让 VS 自动收敛。
 
-如果设置这个 tag，OKE会根据主界面“空闲内存数”，和现有的任务数，来设置 `max_cache_size`。
+如果设置这个 tag，OKE 会根据主界面“空闲内存数”，和现有的任务数，来设置 `max_cache_size`。
 
 <img src="./media/image01.png" />
 
-当然，现在不用这个 tag 了，“空闲内存数” 直接填任意值就行。
+当然，现在不用这个 tag 了，“空闲内存数” 直接填任意小于 2000 的数就行。  
+大于 2000 的话 OKE 会在启动任务的时候检查系统是否有那么多空闲内存，在压制中途加任务时会带来一些不必要的麻烦。
 
 #### RP Checker
 
@@ -129,6 +132,8 @@ src8.set_output(1)
 项目配置文件，支持 json 和 yaml，下面以 json 为例。
 
 大家可以参考 `OKEGui\examples\demo.json`，本小节只讲基础的部分。
+
+需要注意，以下的 tag 名字是严格区分大小写的。另外 `bool` 类型的 tag 不能写 `1/0` 必须写 `true/false`。
 
 + `Version`
 
