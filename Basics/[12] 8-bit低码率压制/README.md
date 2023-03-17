@@ -56,7 +56,7 @@ res = core.std.MaskedMerge(dark, bright, luma_mask, first_plane=True)
 
 如果成品是 1080p，那么做完上面的抗色带操作，就可以送入编码器压制了。但有时字幕组也会需要压制 720p 的版本，这时就需要在 VS 中进行 downscale 处理。
 
-在缩小时，为了避免亮度损失问题，需要使用 `gamma-aware downscale`，对 Y 平面转到线性光下缩小。
+在缩小时，为了避免亮度损失问题，需要使用 `gamma-aware downscale`，将 Y 平面转到线性光下缩小。
 
 ```python
 gray = core.std.ShufflePlanes(src16, 0, colorfamily=vs.GRAY)
@@ -67,7 +67,7 @@ UV = core.fmtc.resample(src16, 1280, 720)
 down = core.std.ShufflePlanes([gray,UV], [0,1,2], vs.YUV)
 ```
 
-这里首先分理出 Y 平面 gray，然后转到线性光，进行缩小。这里缩小使用 fmtc.resample 的默认算法 spline36，非常适合图像缩小。
+这里首先分离出 Y 平面 gray，然后转到线性光，进行缩小。这里缩小使用 fmtc.resample 的默认算法 spline36，非常适合图像缩小。
 
 UV 平面则是将源整体缩小，避免分平面时的 chroma placement 处理。最后合并 Y 和 UV，得到最终缩小后的结果。
 
@@ -117,14 +117,14 @@ ListAssFonts 也可以分析字幕使用的字体，但是分析更加精准。F
 
 8-bit 低码率需要注意这样几个参数：
 
-`--fgo 1或者2`
-当然，这里的 fgo 不是你想的那个 fgo，它其实是 film grain optimization，可以把码率暴力分配给噪点。
-`--psy-trellis 0.2~0.3`
+`--fgo 1或者2`  
+当然，这里的 fgo 不是你想的那个 fgo，它其实是 film grain optimization，可以把码率暴力分配给噪点。  
+`--psy-trellis 0.2~0.3`  
 就是 --psy-rd 的第二个参数，效果与 fgo 类似。
 
-`--psy-rd 0`
-这时候别用 psy-rd 了，这东西是会“保留复杂度”而不是“保留噪点”，它会把噪点搅拌压碎，很难看。
-`--qcomp 0.7`
+`--psy-rd 0`  
+这时候别用 psy-rd 了，这东西是会“保留复杂度”而不是“保留噪点”，它会把噪点搅拌压碎，很难看。  
+`--qcomp 0.7`  
 这个不给高的话，动态和一些静止场面会比较难看，也可以关闭 mbtree 来代替。
 
 给一个参考编码参数：
