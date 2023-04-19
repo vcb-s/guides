@@ -16,7 +16,10 @@
 
 “原色”并不是物理学中的一个概念，而是一个由人类视觉系统决定的生物学概念。人眼视网膜上有两种对光敏感的细胞，视杆细胞和视锥细胞。其中前者虽然数量庞大，而且对光非常敏感，但是主要负责夜视力，颜色学里面基本忽略；后者敏感度较低（相比前者1个光子就可以产生响应，后者需要大概10个），但是却能区分颜色。具体来讲，不同的波长会使人眼中的三种锥状细胞对光的强度产生不同的反应，从而导致我们感受到不同的颜色。
 
-![Cone-fundamentals-with-srgb-spectrum](media/Cone-fundamentals-with-srgb-spectrum.svg)
+<figure style="text-align:center">
+    <img src="media/Cone-fundamentals-with-srgb-spectrum.svg" alt="Normalized response spectra of human cones">
+    <figcaption>人类视锥细胞对单色光谱刺激的归一化反应光谱，波长为纳米。</figcaption>
+</figure>
 
 这三种细胞的归一化的频响曲线如上图。所谓频响（频率响应）频响指的是视锥细胞对各个波长的光的敏感度，也就是光的颜色对于视锥细胞的刺激能力。人眼中共有三种不同类型的视锥细胞，它们对光的波长的反应各不相同。具体来说：
 
