@@ -46,7 +46,7 @@ $$x = \frac{X}{X+Y+Z}$$
 $$y = \frac{Y}{X+Y+Z}$$
 $$z = \frac{Z}{X+Y+Z}$$
 
-其中 $x+y+z=1$。那么上述的公式就描述了从 X、Y、Z 坐标系到三维平面 $X+Y+Z=1$ 的中心投影。如下图所示：
+其中 $x+y+z=1$。那么在归一化以后，表示某一个颜色只需要两个参数，比如 `x` 和 `y`，且 `x` 和 `y` 都是 `[0, 1]` 范围内，且由于 `z >= 0` ， `x + y <= 1`。那么上述的公式就描述了从 X、Y、Z 坐标系到三维平面 $X+Y+Z=1$ 的中心投影，其中原点 S 是投影中心。如下图所示：
 
 <figure style="text-align:center">
     <img src="media/CIE-X-Y-Chromaticity-Diagram.svg" alt="CIE x, y chromaticity diagram">
