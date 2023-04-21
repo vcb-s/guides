@@ -8,7 +8,7 @@
 mask 的核心是 `std.MaskedMerge` 函数，这是 std 里唯一一个函数名带有 mask 的函数。
 
 在上一章里我们实现了 Merge 函数，它可以根据 weight 融合两个 clip。  
-Merge中的weight是一个全局的常量，如果 weight 不是固定的，而是每个位置的像素都有一个独立的 weight，那么这些所有 weight 也构成一个 clip，这个 clip 就是一个 mask。  
+Merge 中的 weight 是一个全局的常量，如果 weight 不是固定的，而是每个位置的像素都有一个独立的 weight，那么这些所有 weight 也构成一个 clip，这个 clip 就是一个 mask。  
 这样通过一个 mask 来进行 clip 的融合，就是 `std.MaskedMerge(clipa, clipb, mask)` 的功能。
 
 从这个例子可以看出，`std.Merge` 与 `std.MaskedMerge` 的主要区别是，后者允许在画面不同区域施加不同的权重，这就是 mask 的含义。
@@ -25,7 +25,7 @@ Merge中的weight是一个全局的常量，如果 weight 不是固定的，而�
 
 从文档可以看到，`std.MaskedMerge` 的参数格式是 `std.MaskedMerge(clip clipa, clip clipb, clip mask[, int[] planes, bint first_plane=0, bint premultiplied=0])`。
 
-前三个参数我们已经了解了。其中 mask 就是混合两个 clip 时的权重，在 mask 为浮点，也就是取指 0-1 的时候很好理解，这与 merge 中的 weight 含义相同。
+前三个参数我们已经了解了。其中 mask 就是混合两个 clip 时的权重，在 mask 为浮点，也就是取值 0-1 的时候很好理解，这与 merge 中的 weight 含义相同。
 
 使用整数 clip 作为 mask 时，比如使用 8bit，这时 mask 输入的取值是 [0-255]。  
 与浮点情况类似地，当 mask 数值为 0 的时候，输出等于 clipa；数值为 255 的时候，输出等于 clipb；当数值为中间值时，输出为 clipa 与 clipb 的对应加权混合。
@@ -61,7 +61,7 @@ mask 可以分成两类，分别是根据像素值直接得到的 mask，以及�
 
 为了达到这一效果，最简单的想法是设定一个阈值：比如说，对于亮度小于等于 8-bit 数值 60 的像素，我们不进行降噪；对于亮度大于 60 的像素，进行降噪。
 
-在8bit低码率处理中，我们做过类似的操作。  
+在 8bit 低码率处理中，我们做过类似的操作。  
 这可以通过 `Binarize` 滤镜实现。
 
 ```python
@@ -193,8 +193,8 @@ mask = core.std.Expr(mask, ['', '128', '128'])
 观察结果画面，观察 mask 出现的位置，有没有漏掉的线条。
 
 再试试把 sigma 数值调大/调小，mask 会有什么变化。  
-sigma调大，敏感度降低，mask中平行线条的间距变宽。  
-敏感度高—>低的调节 线条的TCanny会是两条线->一条线->没有线。
+sigma 调大，敏感度降低，mask 中平行线条的间距变宽。  
+敏感度高—>低的调节 线条的 TCanny 会是两条线->一条线->没有线。
 
 大家再试试给源加点噪声，看看 mask 会有什么变化。  
 ```python
@@ -297,7 +297,7 @@ mask = core.misc.Hysteresis(mask_small, mask_big, planes=[0])
 
 但有个问题是，以前的 `gmmax` 默认值是 50，如果你以前使用默认 `gmmax`，而现在仍然使用默认 `scale`，就会导致行为不一致。因此在使用旧脚本时，需要特别注意这一问题。  
 这个参数只影响生成连续 mask（mode=1），其他模式不受影响。  
-另外，VS-C 对于 TCanny 滤镜做了一些兼容性处理，现在可以同时支持 `gmmax` 和 `scale` 参数，因此你可以仍然使用祖传的 `gmmax` 参数。不过这里建议大家，无论使用哪个，都显示写出 `gmmax=255` 或者 `scale=1.0`。
+另外，VS-C 对于 TCanny 滤镜做了一些兼容性处理，现在可以同时支持 `gmmax` 和 `scale` 参数，因此你可以仍然使用祖传的 `gmmax` 参数。不过这里建议大家，无论使用哪个，都显式写出 `gmmax=255` 或者 `scale=1.0`。
 
 通常 `TCanny(mode=1)` 生成的连续 mask 数值很小，可以后续接 `Expr` 放大，使用 `Expr` 就不限于乘以常数来放大了，比如做一个平方。
 
