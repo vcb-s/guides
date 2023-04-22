@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.5.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.0" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 396.2 138.8" style="enable-background:new 0 0 396.2 138.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#000000;stroke-width:0.5;}
+	
+		.st1{clip-path:url(#SVGID_00000055688561092047824890000000107093907102529190_);fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,2;}
+	.st2{fill:#D3D3D4;}
+	.st3{fill:#C8DDE3;}
+	.st4{fill:#E5C1D3;}
+	.st5{font-family:'Arial-ItalicMT';}
+	.st6{font-size:9px;}
+	.st7{font-family:'ArialMT';}
+	.st8{font-size:7px;}
+	.st9{font-size:5.25px;}
+	
+		.st10{clip-path:url(#SVGID_00000020374313555657572670000014548231153909127326_);fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,2;}
+	.st11{font-size:8px;}
+	.st12{fill:#DB6D78;}
+	.st13{fill:#6DB064;}
+	.st14{fill:#8793C6;}
+	.st15{fill:#FFFFFF;}
+	.st16{font-size:8.1px;}
+	.st17{font-family:'Arial-BoldMT';}
+	.st18{font-family:'Arial-BoldItalicMT';}
+	.st19{font-size:8.9999px;}
+</style>
+<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation. -->
+<!-- Copyright: Copyright 2023 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="ArialMT" units-per-em="2048" underline-position="-217" underline-thickness="150"/>
+<missing-glyph horiz-adv-x="1536" d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z"/>
+<glyph unicode=" " horiz-adv-x="569"/>
+<glyph unicode="(" horiz-adv-x="682" d="M479,-431C380,-306 296,-159 227,9C158,177 124,351 124,531C124,690 150,842 201,987C261,1156 354,1324 479,1491l129,0C527,1352 474,1253 448,1194C407,1102 375,1006 352,906C323,781 309,656 309,530C309,209 409,-111 608,-431z"/>
+<glyph unicode=")" horiz-adv-x="682" d="M253,-431l-129,0C323,-111 423,209 423,530C423,655 409,780 380,903C357,1003 326,1099 285,1191C259,1251 205,1351 124,1491l129,0C378,1324 471,1156 531,987C582,842 608,690 608,531C608,351 574,177 505,9C436,-159 352,-306 253,-431z"/>
+<glyph unicode="," horiz-adv-x="569" d="M182,0l0,205l205,0l0,-205C387,-75 374,-136 347,-182C320,-229 278,-265 220,-290l-50,77C208,-196 236,-172 254,-139C272,-107 282,-61 284,0z"/>
+<glyph unicode="-" horiz-adv-x="682" d="M65,440l0,181l553,0l0,-181z"/>
+<glyph unicode="." horiz-adv-x="569" d="M186,0l0,205l205,0l0,-205z"/>
+<glyph unicode="/" horiz-adv-x="569" d="M0,-25l425,1516l144,0l-424,-1516z"/>
+<glyph unicode="0" horiz-adv-x="1139" d="M85,723C85,896 103,1036 139,1142C174,1247 227,1329 298,1386C368,1443 456,1472 563,1472C642,1472 711,1456 770,1425C829,1393 878,1347 917,1288C956,1228 986,1155 1008,1070C1030,984 1041,868 1041,723C1041,551 1023,412 988,307C953,201 900,119 830,62C759,4 670,-25 563,-25C422,-25 311,26 230,127C133,249 85,448 85,723M270,723C270,482 298,322 355,243C411,163 480,123 563,123C646,123 715,163 772,243C828,323 856,483 856,723C856,964 828,1125 772,1204C715,1283 645,1323 561,1323C478,1323 412,1288 363,1218C301,1129 270,964 270,723z"/>
+<glyph unicode="1" horiz-adv-x="1139" d="M763,0l-180,0l0,1147C540,1106 483,1064 413,1023C342,982 279,951 223,930l0,174C324,1151 412,1209 487,1276C562,1343 616,1409 647,1472l116,0z"/>
+<glyph unicode="2" horiz-adv-x="1139" d="M1031,173l0,-173l-969,0C61,43 68,85 83,125C108,191 147,256 202,320C256,384 334,458 437,542C596,673 704,776 760,853C816,929 844,1001 844,1069C844,1140 819,1201 768,1250C717,1299 650,1323 568,1323C481,1323 412,1297 360,1245C308,1193 282,1121 281,1029l-185,19C109,1186 156,1291 239,1364C322,1436 433,1472 572,1472C713,1472 824,1433 906,1355C988,1277 1029,1180 1029,1065C1029,1006 1017,949 993,892C969,835 929,776 874,713C818,650 725,564 596,455C488,364 419,303 388,271C357,238 332,206 312,173z"/>
+<glyph unicode="3" horiz-adv-x="1139" d="M86,387l180,24C287,309 322,236 372,191C421,146 482,123 553,123C638,123 709,152 768,211C826,270 855,342 855,429C855,512 828,580 774,634C720,687 651,714 568,714C534,714 492,707 441,694l20,158C473,851 483,850 490,850C567,850 636,870 697,910C758,950 789,1012 789,1095C789,1161 767,1216 722,1259C677,1302 620,1324 549,1324C479,1324 421,1302 374,1258C327,1214 297,1148 284,1060l-180,32C126,1213 176,1306 254,1373C332,1439 429,1472 545,1472C625,1472 699,1455 766,1421C833,1386 885,1339 921,1280C956,1221 974,1158 974,1091C974,1028 957,970 923,918C889,866 839,825 772,794C859,774 926,733 974,670C1022,607 1046,528 1046,433C1046,305 999,197 906,108C813,19 695,-26 552,-26C423,-26 317,12 232,89C147,166 98,265 86,387z"/>
+<glyph unicode="4" horiz-adv-x="1139" d="M662,0l0,351l-636,0l0,165l669,950l147,0l0,-950l198,0l0,-165l-198,0l0,-351M662,516l0,661l-459,-661z"/>
+<glyph unicode="5" horiz-adv-x="1139" d="M85,384l189,16C288,308 321,239 372,193C423,146 484,123 556,123C643,123 716,156 776,221C836,286 866,373 866,481C866,584 837,665 780,724C722,783 646,813 553,813C495,813 443,800 396,774C349,747 313,713 286,671l-169,22l142,753l729,0l0,-172l-585,0l-79,-394C412,941 504,972 601,972C729,972 837,928 925,839C1013,750 1057,636 1057,497C1057,364 1018,250 941,153C847,34 719,-25 556,-25C423,-25 314,12 230,87C145,162 97,261 85,384z"/>
+<glyph unicode="6" horiz-adv-x="1139" d="M1019,1107l-179,-14C824,1164 801,1215 772,1247C723,1298 663,1324 592,1324C535,1324 484,1308 441,1276C384,1235 340,1174 307,1095C274,1016 257,903 256,756C299,822 352,871 415,903C478,935 543,951 612,951C732,951 834,907 919,819C1003,730 1045,616 1045,476C1045,384 1025,299 986,220C946,141 891,80 822,38C753,-4 674,-25 586,-25C436,-25 314,30 219,141C124,251 77,433 77,686C77,969 129,1175 234,1304C325,1416 448,1472 603,1472C718,1472 813,1440 887,1375C960,1310 1004,1221 1019,1107M284,475C284,413 297,354 324,297C350,240 387,197 434,168C481,138 531,123 583,123C659,123 724,154 779,215C834,276 861,360 861,465C861,566 834,646 780,705C726,763 658,792 576,792C495,792 426,763 369,705C312,646 284,570 284,475z"/>
+<glyph unicode="7" horiz-adv-x="1139" d="M97,1274l0,173l949,0l0,-140C953,1208 860,1076 769,911C677,746 606,577 556,403C520,280 497,146 487,0l-185,0C304,115 327,255 370,418C413,581 476,739 557,891C638,1042 724,1170 815,1274z"/>
+<glyph unicode="8" horiz-adv-x="1139" d="M362,795C287,822 232,861 196,912C160,963 142,1023 142,1094C142,1201 180,1290 257,1363C334,1436 436,1472 563,1472C691,1472 794,1435 872,1361C950,1286 989,1196 989,1089C989,1021 971,962 936,912C900,861 846,822 773,795C863,766 932,718 979,653C1026,588 1049,510 1049,419C1049,294 1005,188 916,103C827,18 711,-25 566,-25C421,-25 305,18 216,104C127,189 83,296 83,424C83,519 107,599 156,664C204,728 273,772 362,795M326,1100C326,1031 348,974 393,930C438,886 496,864 567,864C636,864 693,886 738,930C782,973 804,1027 804,1090C804,1156 781,1212 736,1257C690,1302 633,1324 565,1324C496,1324 439,1302 394,1258C349,1214 326,1161 326,1100M268,423C268,372 280,322 305,274C329,226 365,189 413,163C461,136 513,123 568,123C654,123 725,151 781,206C837,261 865,332 865,417C865,504 836,575 779,632C721,689 649,717 562,717C477,717 407,689 352,633C296,577 268,507 268,423z"/>
+<glyph unicode=";" horiz-adv-x="569" d="M182,857l0,205l205,0l0,-205M182,0l0,205l205,0l0,-205C387,-75 374,-136 347,-182C320,-229 278,-265 220,-290l-50,77C208,-196 236,-172 254,-139C272,-107 282,-61 284,0z"/>
+<glyph unicode="B" horiz-adv-x="1366" d="M150,0l0,1466l550,0C812,1466 902,1451 970,1422C1037,1392 1090,1346 1129,1285C1167,1223 1186,1158 1186,1091C1186,1028 1169,969 1135,914C1101,859 1050,814 981,780C1070,754 1138,710 1186,647C1233,584 1257,510 1257,425C1257,356 1243,293 1214,234C1185,175 1149,129 1106,97C1063,65 1010,41 946,25C881,8 802,0 709,0M344,850l317,0C747,850 809,856 846,867C895,882 933,906 958,940C983,974 995,1017 995,1068C995,1117 983,1160 960,1197C937,1234 903,1259 860,1273C817,1286 742,1293 637,1293l-293,0M344,173l365,0C772,173 816,175 841,180C886,188 923,201 953,220C983,239 1008,266 1027,302C1046,337 1056,378 1056,425C1056,480 1042,527 1014,568C986,608 947,636 898,653C848,669 776,677 683,677l-339,0z"/>
+<glyph unicode="D" horiz-adv-x="1479" d="M158,0l0,1466l505,0C777,1466 864,1459 924,1445C1008,1426 1080,1391 1139,1340C1216,1275 1274,1191 1313,1090C1351,988 1370,872 1370,741C1370,630 1357,531 1331,445C1305,359 1272,288 1231,232C1190,175 1146,131 1098,99C1049,66 991,42 923,25C854,8 776,0 687,0M352,173l313,0C762,173 838,182 893,200C948,218 991,243 1024,276C1070,322 1106,384 1132,462C1157,539 1170,633 1170,744C1170,897 1145,1015 1095,1098C1044,1180 983,1235 911,1263C859,1283 775,1293 660,1293l-308,0z"/>
+<glyph unicode="E" horiz-adv-x="1366" d="M162,0l0,1466l1060,0l0,-173l-866,0l0,-449l811,0l0,-172l-811,0l0,-499l900,0l0,-173z"/>
+<glyph unicode="F" horiz-adv-x="1251" d="M168,0l0,1466l989,0l0,-173l-795,0l0,-454l688,0l0,-173l-688,0l0,-666z"/>
+<glyph unicode="G" horiz-adv-x="1593" d="M844,575l0,172l621,1l0,-544C1370,128 1271,71 1170,33C1069,-6 965,-25 858,-25C714,-25 583,6 466,68C348,129 259,218 199,335C139,452 109,582 109,726C109,869 139,1002 199,1126C258,1249 344,1341 456,1401C568,1461 697,1491 843,1491C949,1491 1045,1474 1131,1440C1216,1405 1283,1357 1332,1296C1381,1235 1418,1155 1443,1056l-175,-48C1246,1083 1219,1141 1186,1184C1153,1227 1107,1261 1046,1287C985,1312 918,1325 844,1325C755,1325 679,1312 614,1285C549,1258 497,1222 458,1178C418,1134 387,1086 365,1033C328,942 309,844 309,738C309,607 332,498 377,410C422,322 487,257 573,214C659,171 750,150 847,150C931,150 1013,166 1093,199C1173,231 1234,265 1275,302l0,273z"/>
+<glyph unicode="H" horiz-adv-x="1479" d="M164,0l0,1466l194,0l0,-602l762,0l0,602l194,0l0,-1466l-194,0l0,691l-762,0l0,-691z"/>
+<glyph unicode="I" horiz-adv-x="569" d="M191,0l0,1466l194,0l0,-1466z"/>
+<glyph unicode="J" horiz-adv-x="1024" d="M59,416l175,24C239,328 260,251 297,210C334,169 386,148 452,148C501,148 543,159 578,182C613,204 638,234 651,273C664,311 671,372 671,456l0,1010l194,0l0,-999C865,344 850,249 821,182C791,115 744,63 680,28C615,-7 540,-25 453,-25C324,-25 226,12 158,86C89,160 56,270 59,416z"/>
+<glyph unicode="M" horiz-adv-x="1706" d="M152,0l0,1466l292,0l347,-1038C823,331 846,259 861,211C878,264 904,343 939,446l351,1020l261,0l0,-1466l-187,0l0,1227l-426,-1227l-175,0l-424,1248l0,-1248z"/>
+<glyph unicode="P" horiz-adv-x="1366" d="M158,0l0,1466l553,0C808,1466 883,1461 934,1452C1006,1440 1066,1417 1115,1384C1164,1350 1203,1303 1233,1242C1262,1181 1277,1115 1277,1042C1277,917 1237,812 1158,726C1079,639 935,596 728,596l-376,0l0,-596M352,769l379,0C856,769 945,792 998,839C1051,886 1077,951 1077,1036C1077,1097 1062,1150 1031,1194C1000,1237 959,1266 908,1280C875,1289 815,1293 727,1293l-375,0z"/>
+<glyph unicode="R" horiz-adv-x="1479" d="M161,0l0,1466l650,0C942,1466 1041,1453 1109,1427C1177,1400 1231,1354 1272,1287C1313,1220 1333,1147 1333,1066C1333,962 1299,874 1232,803C1165,732 1061,686 920,667C971,642 1010,618 1037,594C1094,542 1147,477 1198,399l255,-399l-244,0l-194,305C958,393 912,460 875,507C838,554 806,586 777,605C748,624 718,637 688,644C666,649 630,651 580,651l-225,0l0,-651M355,819l417,0C861,819 930,828 980,847C1030,865 1068,894 1094,935C1120,975 1133,1019 1133,1066C1133,1135 1108,1192 1058,1237C1007,1282 928,1304 819,1304l-464,0z"/>
+<glyph unicode="T" horiz-adv-x="1251" d="M531,0l0,1293l-483,0l0,173l1162,0l0,-173l-485,0l0,-1293z"/>
+<glyph unicode="V" horiz-adv-x="1366" d="M577,0l-568,1466l210,0l381,-1065C631,316 656,236 677,161C700,241 726,321 756,401l396,1065l198,0l-574,-1466z"/>
+<glyph unicode="f" horiz-adv-x="569" d="M178,0l0,922l-159,0l0,140l159,0l0,113C178,1246 184,1299 197,1334C214,1381 245,1419 289,1448C332,1477 393,1491 472,1491C523,1491 579,1485 640,1473l-27,-157C576,1323 540,1326 507,1326C452,1326 414,1314 391,1291C368,1268 357,1224 357,1160l0,-98l207,0l0,-140l-207,0l0,-922z"/>
+<glyph unicode="r" horiz-adv-x="682" d="M133,0l0,1062l162,0l0,-161C336,976 375,1026 410,1050C445,1074 483,1086 525,1086C586,1086 647,1067 710,1028l-62,-167C604,887 560,900 516,900C477,900 441,888 410,865C379,841 356,808 343,766C323,702 313,632 313,556l0,-556z"/>
+<glyph unicode="&#x2013;" horiz-adv-x="1139" d="M-4,458l0,145l1139,0l0,-145z"/>
+</font>
+
+	<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation. -->
+<!-- Copyright: Copyright 2023 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Arial-ItalicMT" units-per-em="2048" underline-position="-217" underline-thickness="150"/>
+<missing-glyph horiz-adv-x="1536" d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="B" horiz-adv-x="1366" d="M89,0l307,1466l454,0C933,1466 994,1463 1034,1456C1099,1445 1155,1425 1200,1397C1245,1368 1279,1330 1304,1281C1329,1232 1341,1177 1341,1118C1341,1037 1319,966 1275,905C1230,844 1162,797 1071,765C1150,739 1210,700 1249,648C1288,595 1308,534 1308,464C1308,383 1285,306 1239,232C1192,158 1131,101 1055,61C978,20 893,0 799,0M461,840l297,0C900,840 1002,863 1065,908C1127,953 1158,1019 1158,1106C1158,1147 1148,1183 1129,1213C1110,1243 1084,1265 1052,1279C1019,1292 958,1299 869,1299l-312,0M320,166l334,0C743,166 802,169 833,175C895,186 945,204 984,230C1023,255 1053,289 1075,331C1097,373 1108,417 1108,463C1108,532 1087,584 1044,620C1001,655 919,673 798,673l-372,0z"/>
+<glyph unicode="C" horiz-adv-x="1479" d="M1235,516l194,-27C1368,320 1278,192 1161,105C1044,18 912,-25 766,-25C588,-25 447,29 343,138C238,247 186,402 186,605C186,869 265,1087 424,1260C565,1414 741,1491 951,1491C1106,1491 1232,1449 1329,1366C1425,1283 1481,1171 1496,1030l-183,-17C1294,1119 1254,1198 1194,1251C1133,1303 1055,1329 960,1329C781,1329 636,1249 525,1090C429,953 381,790 381,601C381,450 418,335 492,256C566,177 662,137 781,137C882,137 974,170 1056,236C1138,302 1198,395 1235,516z"/>
+<glyph unicode="G" horiz-adv-x="1593" d="M839,578l35,166l642,0l-125,-597C1310,96 1218,55 1115,23C1012,-9 910,-25 810,-25C597,-25 437,39 332,168C243,277 199,416 199,587C199,763 238,923 316,1068C393,1212 491,1319 610,1388C728,1457 859,1491 1004,1491C1108,1491 1201,1472 1284,1435C1367,1397 1430,1347 1474,1284C1518,1221 1550,1138 1569,1037l-192,-21C1356,1117 1314,1194 1249,1248C1184,1301 1100,1328 998,1328C892,1328 793,1299 701,1242C609,1184 536,1097 481,981C426,864 398,732 398,584C398,437 434,325 507,250C580,175 680,137 808,137C935,137 1072,179 1219,263l66,315z"/>
+<glyph unicode="R" horiz-adv-x="1479" d="M96,0l307,1466l615,0C1139,1466 1231,1456 1294,1436C1357,1415 1406,1377 1442,1321C1477,1265 1495,1194 1495,1109C1495,990 1456,891 1378,812C1300,733 1174,682 1000,659C1053,620 1094,581 1121,543C1182,457 1232,368 1269,276l112,-276l-219,0l-105,273C1019,372 976,457 927,529C894,579 860,612 825,628C790,643 734,651 656,651l-228,0l-136,-651M461,810l271,0C857,810 939,812 977,815C1051,822 1112,839 1159,865C1206,891 1243,926 1269,970C1295,1014 1308,1061 1308,1112C1308,1155 1298,1192 1279,1224C1260,1255 1234,1277 1203,1288C1172,1299 1118,1305 1043,1305l-478,0z"/>
+<glyph unicode="Y" horiz-adv-x="1366" d="M572,0l118,567l-451,899l210,0l216,-428C712,945 758,845 803,738C852,829 920,928 1005,1035l344,431l234,0l-700,-914l-115,-552z"/>
+<glyph unicode="i" horiz-adv-x="455" d="M325,1261l43,205l180,0l-43,-205M61,0l222,1062l181,0l-222,-1062z"/>
+<glyph unicode="&#x2019;" horiz-adv-x="455" d="M318,1255l43,205l206,0l-37,-180C507,1173 472,1094 425,1045C377,995 321,966 256,958l17,79C352,1059 404,1132 430,1255z"/>
+</font>
+
+	<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation. -->
+<!-- Copyright: Copyright 2023 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Arial-BoldMT" units-per-em="2048" underline-position="-217" underline-thickness="215"/>
+<missing-glyph horiz-adv-x="1536" d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="0" horiz-adv-x="1139" d="M562,1472C704,1472 815,1421 895,1320C990,1200 1038,1001 1038,723C1038,446 990,246 894,125C815,25 704,-25 562,-25C419,-25 304,30 217,140C130,249 86,445 86,726C86,1002 134,1201 230,1322C309,1422 420,1472 562,1472M562,1239C528,1239 498,1228 471,1207C444,1185 424,1146 409,1090C390,1017 380,895 380,723C380,551 389,433 406,369C423,304 445,261 472,240C498,219 528,208 562,208C596,208 626,219 653,241C680,262 700,301 715,357C734,429 744,551 744,723C744,895 735,1013 718,1078C701,1142 679,1185 653,1207C626,1228 596,1239 562,1239z"/>
+<glyph unicode="1" horiz-adv-x="1139" d="M806,0l-281,0l0,1059C422,963 301,892 162,846l0,255C235,1125 315,1171 401,1238C487,1305 546,1383 578,1472l228,0z"/>
+<glyph unicode="2" horiz-adv-x="1139" d="M1036,261l0,-261l-985,0C62,99 94,192 147,281C200,369 306,486 463,632C590,750 667,830 696,872C735,930 754,987 754,1044C754,1107 737,1155 704,1189C670,1222 623,1239 564,1239C505,1239 459,1221 424,1186C389,1151 369,1092 364,1010l-280,28C101,1193 153,1304 241,1371C329,1438 439,1472 571,1472C716,1472 829,1433 912,1355C995,1277 1036,1180 1036,1064C1036,998 1024,935 1001,876C977,816 939,753 888,688C854,645 793,582 704,501C615,420 559,366 536,339C512,312 493,286 478,261z"/>
+<glyph unicode="4" horiz-adv-x="1139" d="M638,0l0,295l-600,0l0,246l636,931l236,0l0,-930l182,0l0,-247l-182,0l0,-295M638,542l0,501l-337,-501z"/>
+<glyph unicode=":" horiz-adv-x="682" d="M201,781l0,281l281,0l0,-281M201,0l0,281l281,0l0,-281z"/>
+<glyph unicode="B" horiz-adv-x="1479" d="M150,1466l586,0C852,1466 939,1461 996,1452C1053,1442 1104,1422 1149,1391C1194,1360 1231,1320 1261,1269C1291,1218 1306,1160 1306,1097C1306,1028 1288,965 1251,908C1214,851 1163,808 1100,779C1189,753 1258,709 1306,646C1354,583 1378,510 1378,425C1378,358 1363,294 1332,231C1301,168 1258,117 1205,80C1151,42 1085,19 1006,10C957,5 838,1 649,0l-499,0M446,1222l0,-339l194,0C755,883 827,885 855,888C906,894 946,912 975,941C1004,970 1018,1008 1018,1055C1018,1100 1006,1137 981,1166C956,1194 918,1211 869,1217C840,1220 755,1222 616,1222M446,639l0,-392l274,0C827,247 894,250 923,256C967,264 1003,284 1031,315C1058,346 1072,387 1072,439C1072,483 1061,520 1040,551C1019,582 988,604 948,618C907,632 820,639 685,639z"/>
+<glyph unicode="R" horiz-adv-x="1479" d="M150,0l0,1466l623,0C930,1466 1044,1453 1115,1427C1186,1400 1242,1353 1285,1286C1328,1219 1349,1142 1349,1055C1349,945 1317,854 1252,783C1187,711 1091,666 962,647C1026,610 1079,569 1121,524C1162,479 1218,400 1289,286l179,-286l-354,0l-214,319C824,433 772,505 744,535C716,564 686,585 655,596C624,607 574,612 506,612l-60,0l0,-612M446,846l219,0C807,846 896,852 931,864C966,876 994,897 1014,926C1034,955 1044,992 1044,1036C1044,1085 1031,1125 1005,1156C978,1186 941,1205 893,1213C869,1216 797,1218 677,1218l-231,0z"/>
+</font>
+
+	<font horiz-adv-x="2048">
+<!-- Arial is a trademark of The Monotype Corporation. -->
+<!-- Copyright: Copyright 2023 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Arial-BoldItalicMT" units-per-em="2048" underline-position="-217" underline-thickness="215"/>
+<missing-glyph horiz-adv-x="1536" d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z"/>
+<glyph unicode="B" horiz-adv-x="1479" d="M82,0l307,1466l501,0C999,1466 1075,1463 1118,1456C1190,1446 1251,1426 1301,1396C1351,1366 1389,1326 1415,1276C1441,1226 1454,1171 1454,1110C1454,1029 1431,958 1386,899C1341,839 1271,794 1176,763C1251,742 1310,706 1353,653C1395,600 1416,540 1416,473C1416,385 1391,302 1341,223C1291,144 1222,87 1134,52C1046,17 926,0 773,0M566,874l230,0C899,874 974,881 1019,896C1064,911 1098,935 1121,968C1144,1001 1155,1037 1155,1075C1155,1112 1144,1143 1123,1167C1102,1191 1071,1207 1032,1215C1010,1219 957,1221 873,1221l-234,0M433,236l291,0C846,236 928,244 970,260C1011,275 1045,301 1070,337C1095,373 1107,411 1107,451C1107,500 1089,540 1053,572C1017,603 957,619 873,619l-360,0z"/>
+<glyph unicode="C" horiz-adv-x="1479" d="M1146,528l304,-46C1391,317 1302,192 1183,105C1064,18 925,-26 766,-26C587,-26 447,28 346,136C245,244 194,401 194,606C194,773 228,925 296,1064C363,1202 457,1308 577,1381C697,1454 828,1491 969,1491C1128,1491 1256,1449 1354,1364C1452,1279 1510,1163 1527,1016l-289,-28C1222,1073 1191,1135 1146,1174C1100,1212 1039,1231 963,1231C880,1231 802,1206 730,1155C657,1104 599,1025 556,918C513,810 491,702 491,595C491,478 519,387 576,323C632,259 702,227 786,227C864,227 936,252 1001,303C1066,354 1114,429 1146,528z"/>
+<glyph unicode="G" horiz-adv-x="1593" d="M900,783l656,0l-132,-629C1347,104 1252,62 1140,27C1027,-8 913,-25 796,-25C615,-25 476,16 379,98C247,210 181,372 181,585C181,728 209,864 266,995C334,1152 431,1274 556,1361C681,1448 829,1491 998,1491C1167,1491 1303,1452 1406,1373C1508,1294 1576,1180 1609,1029l-281,-32C1303,1080 1264,1142 1209,1184C1154,1226 1084,1247 1001,1247C904,1247 814,1222 733,1171C652,1120 588,1042 542,936C496,830 473,714 473,589C473,466 501,375 557,316C613,257 695,227 803,227C868,227 934,236 1002,255C1070,273 1129,295 1178,320l45,218l-374,0z"/>
+<glyph unicode="R" horiz-adv-x="1479" d="M392,0l-302,0l307,1466l651,0C1160,1466 1247,1455 1310,1432C1372,1409 1422,1366 1461,1305C1499,1244 1518,1169 1518,1082C1518,957 1481,855 1406,774C1331,693 1218,642 1067,623C1106,588 1142,543 1176,486C1243,371 1318,209 1401,0l-324,0C1051,83 1000,212 924,387C883,482 839,545 792,578C763,597 713,607 642,607l-123,0M565,827l160,0C887,827 995,837 1048,856C1101,875 1142,906 1172,947C1202,988 1217,1032 1217,1077C1217,1130 1195,1170 1152,1197C1125,1213 1068,1221 979,1221l-332,0z"/>
+<glyph unicode="Y" horiz-adv-x="1366" d="M821,0l-301,0l119,571l-404,895l321,0l182,-414C781,953 810,881 825,837C850,880 878,926 911,975l139,194l207,297l350,0l-672,-923z"/>
+<glyph unicode="&#x2019;" horiz-adv-x="569" d="M378,1466l289,0l-48,-229C592,1104 548,1011 488,956C427,901 349,872 253,870l28,133C329,1014 366,1033 392,1061C418,1088 438,1131 451,1188l-132,0z"/>
+</font>
+
+	<path class="st0" d="M144.4,90h26.4V63.6h-26.4V90z M144.4,133.2h26.4v-26.4h-26.4V133.2z"/>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="0" y="0.1" width="396.2" height="138.7"/>
+	</defs>
+	<clipPath id="SVGID_00000016055253548173026880000004713732413657373077_">
+		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+	</clipPath>
+	
+		<path style="clip-path:url(#SVGID_00000016055253548173026880000004713732413657373077_);fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,2;" d="
+		M365.6,18.9v119.6 M215.2,18.9v118.6 M150.6,18.9v118.6"/>
+</g>
+<rect x="209.4" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="223.8" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="238.2" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="252.6" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="359.4" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="373.8" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="359.4" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="373.8" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="144.2" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="158.6" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="144.2" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="158.6" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="77.6" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="92" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="77.6" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="92" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="77.6" y="63.4" class="st3" width="12.5" height="12.5"/>
+<rect x="92" y="63.4" class="st3" width="12.5" height="12.5"/>
+<rect x="77.6" y="77.8" class="st3" width="12.5" height="12.5"/>
+<rect x="92" y="77.8" class="st3" width="12.5" height="12.5"/>
+<rect x="77.6" y="106.6" class="st4" width="12.5" height="12.5"/>
+<rect x="92" y="106.6" class="st4" width="12.5" height="12.5"/>
+<rect x="77.6" y="121" class="st4" width="12.5" height="12.5"/>
+<rect x="92" y="121" class="st4" width="12.5" height="12.5"/>
+<rect x="137.2" y="78" class="st3" width="26.4" height="12"/>
+<rect x="137.2" y="63.6" class="st3" width="26.4" height="12"/>
+<rect x="137.2" y="121.2" class="st4" width="26.4" height="12"/>
+<rect x="137.2" y="106.8" class="st4" width="26.4" height="12"/>
+<path class="st0" d="M209.6,90h55.2V63.6h-55.2V90z M209.6,133.2h55.2v-26.4h-55.2V133.2z M359.6,90H386V63.6h-26.4V90z
+	 M359.6,133.2H386v-26.4h-26.4V133.2z"/>
+<rect x="216.8" y="106.8" class="st4" width="55.2" height="12.2"/>
+<rect x="188" y="63.6" class="st3" width="55.2" height="12.2"/>
+<text transform="matrix(1 0 0 1 78.7833 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 84.588 31.345)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 93.1832 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 98.9879 31.345)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 78.7833 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 84.588 45.7449)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 93.1832 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 98.9879 45.7449)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 145.7829 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 151.588 45.7449)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 145.7829 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 151.588 31.345)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 160.1832 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 165.9879 31.345)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 140.505 71.595)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 145.9039 73.595)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 150.153 74.596)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 154.2409 74.595)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 156.8659 74.595)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 140.505 85.9949)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 145.9039 87.9949)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 150.153 88.9959)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1.3333 154.2409 88.9949)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 156.8659 88.9949)" class="st7 st8">3</text>
+<rect x="352.4" y="106.8" class="st4" width="26.4" height="26.4"/>
+<text transform="matrix(1 0 0 1 140.4279 114.8455)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 145.8273 116.8455)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 150.2301 117.8465)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 154.318 117.8455)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 156.943 117.8455)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 355.3268 122.0447)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 360.7272 124.0447)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 365.1305 125.0457)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 369.2184 125.0447)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 371.8434 125.0447)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 140.4279 129.2449)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 145.8273 131.2449)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 150.2301 132.2459)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1.3333 154.318 132.2449)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 156.943 132.2449)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 205.4039 71.595)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 210.8043 73.595)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 215.0534 74.596)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 219.1413 74.595)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 221.7663 74.595)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 160.1832 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 165.9879 45.7449)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 234.1266 114.8455)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 239.527 116.8455)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 243.9303 117.8465)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 248.0182 117.8455)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 250.6432 117.8455)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 361.3834 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 367.1881 31.345)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 375.7828 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 381.5885 31.345)" class="st7 st8">1</text>
+<g>
+	<defs>
+		<rect id="SVGID_00000115483350129685331380000001586190323235238785_" x="0" y="0.1" width="396.2" height="138.7"/>
+	</defs>
+	<clipPath id="SVGID_00000018937163851228883150000005271101817782211216_">
+		<use xlink:href="#SVGID_00000115483350129685331380000001586190323235238785_"  style="overflow:visible;"/>
+	</clipPath>
+	
+		<line style="clip-path:url(#SVGID_00000018937163851228883150000005271101817782211216_);fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2,2;" x1="308.2" y1="18.9" x2="308.2" y2="138"/>
+</g>
+<rect x="294.8" y="20.2" class="st2" width="12.5" height="12.5"/>
+<text transform="matrix(1 0 0 1 361.3834 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 367.1881 45.7449)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 375.7828 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 381.5885 45.7449)" class="st7 st8">3</text>
+<rect x="309.2" y="20.2" class="st2" width="12.5" height="12.5"/>
+<rect x="294.8" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="309.2" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="295" y="106.8" class="st4" width="26.4" height="26.4"/>
+<rect x="295" y="63.6" class="st3" width="26.4" height="26.4"/>
+<text transform="matrix(1 0 0 1 298.0055 78.7947)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 303.4039 80.7947)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 307.653 81.7957)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 311.7408 81.7947)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 314.3658 81.7947)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 297.9283 122.0447)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 303.3268 124.0447)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 307.7301 125.0457)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 311.818 125.0447)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 314.443 125.0447)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 296.7828 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 302.5885 45.7449)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 311.1832 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 316.9879 45.7449)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 279.1285 16.7952)"><tspan x="0" y="0" class="st7 st11">H</tspan><tspan x="5.6" y="0" class="st7 st11">.</tspan></text>
+<text transform="matrix(1 0 0 1 287.2965 16.7952)"><tspan x="0" y="0" class="st7 st11">26</tspan><tspan x="8.9" y="0" class="st7 st11">1</tspan><tspan x="12.6" y="0" class="st7 st11">, MPEG</tspan><tspan x="40.6" y="0" class="st7 st11">-</tspan><tspan x="42.3" y="0" class="st7 st11">1)</tspan></text>
+<text transform="matrix(1 0 0 1 296.7828 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 302.5885 31.345)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 311.1832 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 316.9879 31.345)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 211.2829 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 217.0885 31.345)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 225.6832 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 231.4879 31.345)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 240.0827 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 245.8883 31.345)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 254.483 28.345)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 260.2877 31.345)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 76.861 71.595)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 82.2609 73.595)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 86.5099 74.596)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 91.2609 71.595)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 96.6608 73.595)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 100.9098 74.596)" class="st7 st8">1</text>
+<text transform="matrix(1 0 0 1 76.861 85.9949)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 82.2609 87.9949)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 86.5099 88.9959)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 91.2609 85.9949)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 96.6608 87.9949)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 100.9098 88.9959)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 76.7838 114.8455)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 82.1842 116.8455)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 86.5871 117.8465)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1 91.1837 114.8455)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 96.5841 116.8455)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 100.987 117.8465)" class="st7 st8">1</text>
+<rect x="12" y="20.2" class="st12" width="12.5" height="12.5"/>
+<rect x="26.4" y="20.2" class="st12" width="12.5" height="12.5"/>
+<rect x="12" y="34.6" class="st12" width="12.5" height="12.5"/>
+<rect x="26.4" y="34.6" class="st12" width="12.5" height="12.5"/>
+<rect x="12" y="63.4" class="st13" width="12.5" height="12.5"/>
+<text transform="matrix(1 0 0 1 76.7838 129.2449)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 82.1842 131.2449)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 86.5871 132.2459)" class="st7 st8">2</text>
+<text transform="matrix(1 0 0 1 91.1837 129.2449)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 96.5841 131.2449)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 100.987 132.2459)" class="st7 st8">3</text>
+<rect x="26.4" y="63.4" class="st13" width="12.5" height="12.5"/>
+<rect x="12" y="77.8" class="st13" width="12.5" height="12.5"/>
+<rect x="26.4" y="77.8" class="st13" width="12.5" height="12.5"/>
+<rect x="12" y="106.6" class="st14" width="12.5" height="12.5"/>
+<rect x="26.4" y="106.6" class="st14" width="12.5" height="12.5"/>
+<rect x="12" y="121" class="st14" width="12.5" height="12.5"/>
+<rect x="26.4" y="121" class="st14" width="12.5" height="12.5"/>
+<rect x="209.4" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="223.8" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="238.2" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="252.6" y="34.6" class="st2" width="12.5" height="12.5"/>
+<rect x="216.8" y="121" class="st4" width="55.2" height="12.2"/>
+<rect x="188" y="77.8" class="st3" width="55.2" height="12.2"/>
+<text transform="matrix(1 0 0 1 205.4039 85.9949)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 210.8043 87.9949)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 215.0534 88.9959)" class="st7 st8">4</text>
+<text transform="matrix(1 0 0 1.3333 219.1413 88.9949)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 221.7663 88.9949)" class="st7 st8">7</text>
+<text transform="matrix(1 0 0 1 234.1266 129.2449)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 239.527 131.2449)" class="st7 st8">R</text>
+<text transform="matrix(1 0 0 1 243.9303 132.2459)" class="st7 st8">4</text>
+<text transform="matrix(1 0 0 1.3333 248.0182 132.2449)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 250.6432 132.2449)" class="st7 st8">7</text>
+<rect x="352.4" y="63.6" class="st3" width="26.4" height="26.4"/>
+<text transform="matrix(1 0 0 1 211.2829 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 217.0885 45.7449)" class="st7 st8">4</text>
+<text transform="matrix(1 0 0 1 225.6832 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 231.4879 45.7449)" class="st7 st8">5</text>
+<text transform="matrix(1 0 0 1 240.0827 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 245.8883 45.7449)" class="st7 st8">6</text>
+<text transform="matrix(1 0 0 1 254.483 42.7449)" class="st5 st6">Y’</text>
+<text transform="matrix(1 0 0 1 260.2877 45.7449)" class="st7 st8">7</text>
+<text transform="matrix(1 0 0 1 355.4039 78.7947)" class="st5 st6">C</text>
+<text transform="matrix(1 0 0 1 360.8043 80.7947)" class="st7 st8">B</text>
+<text transform="matrix(1 0 0 1 365.0533 81.7957)" class="st7 st8">0</text>
+<text transform="matrix(1 0 0 1.3333 369.1412 81.7947)" class="st7 st9">–</text>
+<text transform="matrix(1 0 0 1 371.7662 81.7947)" class="st7 st8">3</text>
+<text transform="matrix(1 0 0 1 12.7921 28.345)" class="st15 st5 st6">R’</text>
+<text transform="matrix(1 0 0 1 19.4069 31.345)" class="st15 st7 st8">0</text>
+<text transform="matrix(1 0 0 1 27.192 28.345)" class="st15 st5 st6">R’</text>
+<text transform="matrix(1 0 0 1 33.8068 31.345)" class="st15 st7 st8">1</text>
+<text transform="matrix(1 0 0 1 12.7921 42.7449)" class="st15 st5 st6">R’</text>
+<text transform="matrix(1 0 0 1 19.4069 45.7449)" class="st15 st7 st8">2</text>
+<text transform="matrix(1 0 0 1 27.192 42.7449)" class="st15 st5 st6">R’</text>
+<text transform="matrix(1 0 0 1 33.8068 45.7449)" class="st15 st7 st8">3</text>
+<text transform="matrix(1 0 0 1.1111 12.8966 71.595)" class="st15 st5 st16">G</text>
+<text transform="matrix(1 0 0 1 18.4205 71.595)" class="st15 st5 st6">’</text>
+<text transform="matrix(1 0 0 1 19.3024 74.595)" class="st15 st7 st8">0</text>
+<text transform="matrix(1 0 0 1.1111 27.2965 71.595)" class="st15 st5 st16">G</text>
+<text transform="matrix(1 0 0 1 32.8204 71.595)" class="st15 st5 st6">’</text>
+<text transform="matrix(1 0 0 1 33.7023 74.595)" class="st15 st7 st8">1</text>
+<text transform="matrix(1 0 0 1.1111 12.8966 85.9949)" class="st15 st5 st16">G</text>
+<text transform="matrix(1 0 0 1 18.4205 85.9949)" class="st15 st5 st6">’</text>
+<text transform="matrix(1 0 0 1 19.3024 88.9949)" class="st15 st7 st8">2</text>
+<text transform="matrix(1 0 0 1.1111 27.2965 85.9949)" class="st15 st5 st16">G</text>
+<text transform="matrix(1 0 0 1 32.8204 85.9949)" class="st15 st5 st6">’</text>
+<text transform="matrix(1 0 0 1 33.7023 88.9949)" class="st15 st7 st8">3</text>
+<text transform="matrix(1 0 0 1 12.8371 114.8455)" class="st15 st5 st6">B’</text>
+<text transform="matrix(1 0 0 1 19.362 117.8455)" class="st15 st7 st8">0</text>
+<text transform="matrix(1 0 0 1 27.237 114.8455)" class="st15 st5 st6">B’</text>
+<text transform="matrix(1 0 0 1 33.7619 117.8455)" class="st15 st7 st8">1</text>
+<text transform="matrix(1 0 0 1 93.6574 7.7952)" class="st17 st6">4:4:4</text>
+<text transform="matrix(1 0 0 1 147.1891 7.7952)" class="st17 st6">4:2:2</text>
+<text transform="matrix(1 0 0 1 12.8375 129.241)" class="st15 st5 st6">B’</text>
+<text transform="matrix(1 0 0 1 19.362 132.2449)" class="st15 st7 st8">2</text>
+<text transform="matrix(1 0 0 1 27.237 129.2449)" class="st15 st5 st6">B’</text>
+<text transform="matrix(1 0 0 1 33.7619 132.2449)" class="st15 st7 st8">3</text>
+<text transform="matrix(1 0 0 1.0099 63.4723 7.7952)" class="st18 st19">Y’C</text>
+<text transform="matrix(1 0 0 1.0099 76.5036 10.8245)" class="st17 st8">B</text>
+<text transform="matrix(1 0 0 1.0099 81.1798 7.7952)" class="st18 st19">C</text>
+<text transform="matrix(1 0 0 1.0099 86.3815 10.8245)" class="st17 st8">R</text>
+<text transform="matrix(1 0 0 1 91.0294 7.7952)" class="st7 st6"> </text>
+<text transform="matrix(1 0 0 1 362.3883 7.7952)" class="st17 st6">4:2:0</text>
+<text transform="matrix(1 0 0 1 142.6178 16.7947)"><tspan x="0" y="0" class="st7 st11">(B</tspan><tspan x="8" y="0" class="st7 st11">T</tspan><tspan x="12.1" y="0" class="st7 st11">.601)</tspan></text>
+<text transform="matrix(1 0 0 1 351.1783 16.7947)" class="st7 st11">(MPEG-2 fr)</text>
+<text transform="matrix(1 0 0 1 227.2233 7.7952)"><tspan x="0" y="0" class="st17 st6">4</tspan><tspan x="5" y="0" class="st17 st6">:</tspan><tspan x="7.6" y="0" class="st17 st6">1</tspan><tspan x="12.6" y="0" class="st17 st6">:</tspan><tspan x="15.1" y="0" class="st17 st6">1</tspan></text>
+<text transform="matrix(1 0 0 1 205.5348 16.7947)" class="st7 st11">(480</text>
+<text transform="matrix(1 0 0 1 222.5514 16.7947)" class="st5 st11">i</text>
+<text transform="matrix(1 0 0 1 224.7428 16.7947)"><tspan x="0" y="0" class="st7 st11"> </tspan><tspan x="2.2" y="0" class="st7 st11">D</tspan><tspan x="7.9" y="0" class="st7 st11">V25; D-7)</tspan></text>
+<text transform="matrix(1 0 0 1 276.9733 7.7952)" class="st17 st6">4:2:0</text>
+<text transform="matrix(1 0 0 1 297.8531 7.7952)" class="st7 st6"> </text>
+<text transform="matrix(1 0 0 1 300.4801 7.7952)"><tspan x="0" y="0" class="st7 st11">(</tspan><tspan x="2.9" y="0" class="st7 st11">JPEG/JFI</tspan><tspan x="37.1" y="0" class="st7 st11">F</tspan><tspan x="41.3" y="0" class="st7 st11">,</tspan></text>
+<text transform="matrix(1 0 0 1.0099 1.373291e-04 7.7952)" class="st18 st19">R’G’B’</text>
+<text transform="matrix(1 0 0 1 25.8292 7.7952)" class="st7 st6"> </text>
+<text transform="matrix(1 0 0 1 28.4572 7.7952)" class="st17 st6">4:4:4</text>
+</svg>
