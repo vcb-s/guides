@@ -388,8 +388,109 @@ UV 从 full range 转换到 limited range 有一个额外的注意点：limited 
 
 ## 视频文件
 
+这一节将会剖析视频文件，分析其构成。
+
 ### 容器
+
+看过[科普](https://vcb-s.com/archives/2726)的应该了解到**容器**的概念了，现在一定明白 `mkv` 比 `mp4` 画质好这种说法非常荒谬。
+
+现实中我们遇到的视频，一般是 `mp4`,`mkv/webm`,`mov `甚至 `avi`,`wmv` 这些后缀的文件，对于这些文件格式，我们称为**容器(container)**，意为承载其他东西的文件。
+
+为什么需要容器呢？因为视频raw一般无法独立使用，绝大多数情况要搭配声音播放。以 VCB-S 的 BDRip 为例，多条音轨也很常见，主音轨之外可能还有评论音轨。有些甚至还有字幕轨道。这些复杂性就意味着需要一个足够灵活的“容器”来承载这些轨道。
 
 ### 轨道
 
+一般我们将容器中承载的数据分为轨道，比如**视频轨**，**音频轨** ，**字幕轨**（章节信息不是轨道，是独立的。）
+
 ### 结构
+
+以最常用的 `mkv` 格式为例，具体剖析视频文件的构成。`mkv` 文件可以通过 [mkvtoolnix-gui](https://mkvtoolnix.download/) 的 `info tool`工具来看视频文件结构。
+
+<figure style="text-align:center">
+    <img src="media/mkv-info-tool.png" alt="mkv info tool">
+    <figcaption>mkv info tool</figcaption>
+</figure>
+
+顺带一说`Matroska`容器，这个名字来源是`Matryoshka doll`，也就是俄罗斯套娃，或许也在暗示这个格式的特性。
+
+<figure style="text-align:center">
+    <img src="media/mkv-structure.png" alt="mkv structure">
+    <figcaption>mkv 结构</figcaption>
+</figure>
+
+一个mkv的结构大致如图所示，上文说过 `mkv` 名字来源于俄罗斯套娃，其实一个mkv里面分 `segment`，每个 `segment`才包括 `track`。`segment` 才是我们一般意义上说的一个视频（包括音频视频等等），因此可以发现，mkv就是在做这样的套娃操作。其中 `Segment info` 和 `tracks` 就是最重要的`metadata`了。
+
+#### Segment information
+
+<figure style="text-align:center">
+    <img src="media/mkv-segment-info.png" alt="mkv segment information">
+    <figcaption>mkv segment information</figcaption>
+</figure>
+
+`Segment info` 主要包括一些在 `mediainfo`里看到的应用程序的名字版本/混流的时间戳等等。
+
+`timestamp scale`，它表示了mkv里面时间戳的精度，单位是ns。这里的数字是 1M 对吧，说明 mkv 里面时间戳精度只有 1ms。这就解释了为什么比如说 ass 特效，也只有 ms 级别的时间精度。当然理论上 scale 是可以改的，从单位 ns 也可以看出标准是非常灵活的，但是实际上 mkvtoolnix 默认值就是 1M scale。
+
+`segment UID `是个UUID，用于唯一标志一个 `segment`，这个如果你要用mkv的高级用法(e.g. [Ordered Chapter](https://www.nmm-hd.org/bbs/thread-1178-1-1.html))可能会遇到。
+
+> 虽然 mkv 的标准中保留了多个 segments的可能性，但正常的视频文件仅含有单个segment
+
+#### Track
+
+<figure style="text-align:center">
+    <img src="media/mkv-track-info.png" alt="mkv track information">
+    <figcaption>mkv track information</figcaption>
+</figure>
+
+`Tracks` 里面包含这个文件里面的视频轨音频轨的信息。
+
+`Track number` 这里注意，有个从0开始还是从1开始的问题，这里也列出来了工具用 0 开始的`track number`。
+
+#### Cluster
+
+mkv 的核心数据被记录在这里：
+
+<figure style="text-align:center">
+    <img src="media/mkv-cluster-info.png" alt="mkv cluster information">
+    <figcaption>mkv cluster information</figcaption>
+</figure>
+
+这里可以观察到：
+
+1. mkv 里面不同`track` 的数据是交错在一起存储的，一个 `cluster` 表示一小段时间对应的所有轨道的数据，`cluster` 一般是 mkv seek 的目标。也就是最不济也可以根据时间戳 seek 到对应的 cluster。
+
+   这里面概念较多，其中 `discardable` 这个概念不是很重要，不被引用的帧都是 `discardable`。这是表示如果播放器在定位到一个`cluster`之后，然后想通过逐帧解码来定位到某个具体的帧，`discardable`的帧可以不解码直接跳过。`key`表示是前文提过的 I 帧。
+
+2. 这里可以看出 `track1`(视频)，`track2`(音频)都是分 `frame`存放的。然后你有时候用 `mkvmerge`切割时会发现，pcm 音频明明是可以完美按照 `sample`切割的，但切割后却会出现 audio delay？就是这里的 `frame` 在作怪。`mkvmerge` 只能按照整数个 `frame` 来切割（音视频都是如此），即使是 `pcm`音频。
+
+> 这里会发现部分 timestamp 并不是按照顺序出现的，这个就是因为 GOP 在传输过程中不同帧解码顺序的需求造成的，具体内容参见 GOP 节。
+>
+> `framing` 与视频的帧(frame)不是一个概念，是通信协议上的 `frame`。所有音视频编码都是分 `frame`来编码的，比如视频是帧为单位，音频则是以几十到100多ms为单位做一个`audio frame`来压缩，目前暂时可以认为是能够独立解码的最小单位。
+
+#### Cues
+
+<figure style="text-align:center">
+    <img src="media/mkv-cues-info.png" alt="mkv cues information">
+    <figcaption>mkv cues information</figcaption>
+</figure>
+
+在一堆 `clusters` 之后是 `cues`。这个是帮助播放器 `seek` 的。给出了若干时间对应到 `segment` 的文件起始偏移量的数据。播放器加载了这个表格，对着`timestamp` 做个二分搜索，找到最近的之前一个时间戳所在的 `cue`，然后就定位到了对应的 `cluster`。这就解释了为什么 `raw` 视频（直接通过 x264/265 等编码器编码生成的文件）是不能 `seek` 的。但是 `mkv` 却可以快速的任意 `seek`。
+
+#### Tags
+
+<figure style="text-align:center">
+    <img src="media/mkv-tags-info.png" alt="mkv tags information">
+    <figcaption>mkv tags information</figcaption>
+</figure>
+
+mkv 的最末尾有一个 `Tags` 段，这里面记录了 `mediainfo`，可以看到总时长、帧数、BPS(Bits Per Second) 之类的信息。mkv 的 tag 系统比 mp3 等的强大得多，有兴趣的可以自行阅读 [MKV Spec](https://www.matroska.org/technical/tagging.html) 和 mkvmerge 的文档。
+
+#### Chapter
+
+<figure style="text-align:center">
+    <img src="media/mkv-chapter-info.png" alt="mkv chapter information">
+    <figcaption>mkv chapter information</figcaption>
+</figure>
+
+Chapter 记录了章节的时间，名称，语言等信息，这些内容可以与 `mediainfo` 中看到的章节信息一一对应。
+
