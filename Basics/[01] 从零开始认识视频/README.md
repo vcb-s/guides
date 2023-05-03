@@ -393,7 +393,7 @@ UV 从 full range 转换到 limited range 有一个额外的注意点：limited 
     <figcaption>GOP 结构 IBBPBBPBB</figcaption>
 </figure>
 
-上图是一个可以表示为 IBBPBBPBB 的 GOP 结构，细心的读者可能会发现，在第 6 帧（P帧）以后的两个 B 帧均引用了第 9 帧（I帧）。这是因为 IDR 帧仅代表后续的序列帧不可以参考该帧以前的内容，却并没有规定不可以参考下一个 GOP 区间的内容。像这样的 GOP 被称为`Open GOP`。相反，如果一个 GOP 中的帧既不能向 IDR 帧以前的内容参考，也不可以向下一个 IDR 帧以后的内容参考，那么这个 GOP 就被称为 `Closed GOP`。
+上图是一个可以表示为 IBBPBBPBB 的 GOP 结构，箭头表示参考关系。从图中可以看出，在第 6 帧（P帧）以后的两个 B 帧均参考了第 9 帧（I帧）。这是因为 IDR 帧仅代表后续的序列帧不可以参考该帧以前的内容，却并没有规定不可以参考下一个 GOP 区间的内容。像这样的 GOP 被称为`Open GOP`。相反，如果一个 GOP 中的帧既不能向 IDR 帧以前的内容参考，也不可以向下一个 IDR 帧以后的内容参考，那么这个 GOP 就被称为 `Closed GOP`。
 
 <figure style="text-align:center">
     <img src="media/GOP-Structure-Transmission.svg" alt="GOP Structure Transmission">
