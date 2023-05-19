@@ -84,22 +84,22 @@
 <table width="220px">
     <tr>
         <td style="width:120px;text-align:center">Source Frame</td>
-        <td style="width:30px;text-align:center" colspan="3">1</td>
-        <td style="width:20px;text-align:center" colspan="2">2</td>
+        <td style="width:30px;text-align:center" colspan="2">1</td>
+        <td style="width:20px;text-align:center" colspan="3">2</td>
         <td style="width:30px;text-align:center" colspan="3">3</td>
         <td style="width:20px;text-align:center" colspan="2">4</td>
     </tr>
     <tr>
         <td style="width:120px;text-align:center">TFF flag</td>
+        <td style="width:30px;text-align:center" colspan="2">1</td>
+        <td style="width:20px;text-align:center" colspan="3">0</td>
         <td style="width:30px;text-align:center" colspan="3">1</td>
         <td style="width:20px;text-align:center" colspan="2">0</td>
-        <td style="width:30px;text-align:center" colspan="3">0</td>
-        <td style="width:20px;text-align:center" colspan="2">1</td>
     </tr>
     <tr>
         <td style="width:120px;text-align:center">RFF flag</td>
-        <td style="width:30px;text-align:center" colspan="3">1</td>
-        <td style="width:20px;text-align:center" colspan="2">0</td>
+        <td style="width:30px;text-align:center" colspan="2">0</td>
+        <td style="width:20px;text-align:center" colspan="3">1</td>
         <td style="width:30px;text-align:center" colspan="3">1</td>
         <td style="width:20px;text-align:center" colspan="2">0</td>
     </tr>
@@ -107,12 +107,12 @@
         <td style="width:120px;text-align:center">Field</td>
         <td style="width:10px;text-align:center">1t</td>
         <td style="width:10px;text-align:center">1b</td>
-        <td style="width:10px;text-align:center">1t_r</td>
         <td style="width:10px;text-align:center">2b</td>
         <td style="width:10px;text-align:center">2t</td>
-        <td style="width:10px;text-align:center">3b</td>
+        <td style="width:10px;text-align:center">2b_r</td>
         <td style="width:10px;text-align:center">3t</td>
-        <td style="width:10px;text-align:center">3b_r</td>
+        <td style="width:10px;text-align:center">3b</td>
+        <td style="width:10px;text-align:center">3t_r</td>
         <td style="width:10px;text-align:center">4t</td>
         <td style="width:10px;text-align:center">4b</td>
     </tr>
@@ -184,6 +184,8 @@ DGIndex 有一个 gui，基本操作是 `File - Open (F2)`，然后把需要加�
 
 d2v 文件结构可以从 `DGIndexManual.html` 中看，不再说明，主要说下怎么从 Vapoursynth 中加载 `.d2v`，有两种方法，一种是最近 port 的自带的 `dgdecode.MPEG2Source`，另一种是 `d2v.Source`。
 
+DGIndex 的现代化替代品是 [D2VWitch](https://github.com/dubhater/D2VWitch)，与 `d2v.Source` 配套。
+
 两个滤镜使用都很常规，指定 d2v 路径即可。只是对于 Force Film 生成的 d2v，`d2v.Source` 需要指定 `rff=False` 否则会得到一个帧率正确帧数错误的 clip。
 
 *`dgdecode.MPEG2Source` 现在会在 clip 顶部与底部错误地各加 4px*
@@ -216,7 +218,7 @@ pulldown flags 处理失败，可能是因为视频流破损、后期剪辑失�
 
 可以使用 DGIndex，也可以用以下方法。
 
-假设 repeat = 1 / 2 / True 时，读取到的视频帧数为 x，repeat = 0 / False 时读取到的视频帧数为 y，如果符合 `| 0.8 * x – y| < 1` 则可以认为源视频是全程 soft pulldown，可以使用 `repeat=0` 得到 24p 的视频进行后处理，否则必须要开启 `repeat=1`。当然就算是完美的 soft pulldown，开启 `repeat=1` 读取后再进行 IVTC 也没有问题。示例脚本：
+假设 repeat = 1 / 2 / True 时，读取到的视频帧数为 x，repeat = 0 / False 时读取到的视频帧数为 y，如果符合 `| 0.8 * x – y| < 1` 则可以认为源视频是全程 soft pulldown，可以使用 `repeat=0` 得到 24p 的视频进行后处理，否则必须要开启 `repeat=1`。~~当然就算是完美的 soft pulldown，开启 `repeat=1` 读取后再进行 IVTC 也没有问题。~~示例脚本：
 
 ```python
 import vapoursynth as vs
