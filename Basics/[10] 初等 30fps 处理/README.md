@@ -113,8 +113,8 @@
         <td style="width:10px;text-align:center">3t</td>
         <td style="width:10px;text-align:center">3b</td>
         <td style="width:10px;text-align:center">3t_r</td>
-        <td style="width:10px;text-align:center">4t</td>
         <td style="width:10px;text-align:center">4b</td>
+        <td style="width:10px;text-align:center">4t</td>
     </tr>
     <tr>
         <td style="width:120px;text-align:center">Decode Frame</td>
