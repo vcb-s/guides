@@ -83,46 +83,46 @@
 
 <table width="220px">
     <tr>
-        <td style="width:120px;text-align:center">Source Frame</td>
-        <td style="width:30px;text-align:center" colspan="2">1</td>
-        <td style="width:20px;text-align:center" colspan="3">2</td>
-        <td style="width:30px;text-align:center" colspan="3">3</td>
-        <td style="width:20px;text-align:center" colspan="2">4</td>
+        <td style="width:120px">Source Frame</td>
+        <td style="width:30px" colspan="2">0</td>
+        <td style="width:20px" colspan="3">1</td>
+        <td style="width:30px" colspan="2">2</td>
+        <td style="width:20px" colspan="3">3</td>
     </tr>
     <tr>
-        <td style="width:120px;text-align:center">TFF flag</td>
-        <td style="width:30px;text-align:center" colspan="2">1</td>
-        <td style="width:20px;text-align:center" colspan="3">0</td>
-        <td style="width:30px;text-align:center" colspan="3">1</td>
-        <td style="width:20px;text-align:center" colspan="2">0</td>
+        <td style="width:120px">TFF flag</td>
+        <td style="width:30px" colspan="2">1</td>
+        <td style="width:20px" colspan="3">1</td>
+        <td style="width:30px" colspan="2">0</td>
+        <td style="width:20px" colspan="3">0</td>
     </tr>
     <tr>
-        <td style="width:120px;text-align:center">RFF flag</td>
-        <td style="width:30px;text-align:center" colspan="2">0</td>
-        <td style="width:20px;text-align:center" colspan="3">1</td>
-        <td style="width:30px;text-align:center" colspan="3">1</td>
-        <td style="width:20px;text-align:center" colspan="2">0</td>
+        <td style="width:120px">RFF flag</td>
+        <td style="width:30px" colspan="2">0</td>
+        <td style="width:20px" colspan="3">1</td>
+        <td style="width:30px" colspan="2">0</td>
+        <td style="width:20px" colspan="3">1</td>
     </tr>
     <tr>
-        <td style="width:120px;text-align:center">Field</td>
-        <td style="width:10px;text-align:center">1t</td>
-        <td style="width:10px;text-align:center">1b</td>
-        <td style="width:10px;text-align:center">2b</td>
-        <td style="width:10px;text-align:center">2t</td>
-        <td style="width:10px;text-align:center">2b_r</td>
-        <td style="width:10px;text-align:center">3t</td>
-        <td style="width:10px;text-align:center">3b</td>
-        <td style="width:10px;text-align:center">3t_r</td>
-        <td style="width:10px;text-align:center">4b</td>
-        <td style="width:10px;text-align:center">4t</td>
+        <td style="width:120px">Field</td>
+        <td style="width:10px">0t</td>
+        <td style="width:10px">0b</td>
+        <td style="width:10px">1t</td>
+        <td style="width:10px">1b</td>
+        <td style="width:10px">1t_r</td>
+        <td style="width:10px">2b</td>
+        <td style="width:10px">2t</td>
+        <td style="width:10px">3b</td>
+        <td style="width:10px">3t</td>
+        <td style="width:10px">3b_r</td>
     </tr>
     <tr>
-        <td style="width:120px;text-align:center">Decode Frame</td>
-        <td style="width:20px;text-align:center" colspan="2">1</td>
-        <td style="width:20px;text-align:center" colspan="2">2</td>
-        <td style="width:20px;text-align:center" colspan="2">3</td>
-        <td style="width:20px;text-align:center" colspan="2">4</td>
-        <td style="width:20px;text-align:center" colspan="2">5</td>
+        <td style="width:120px">Decode Frame</td>
+        <td style="width:20px" colspan="2">0</td>
+        <td style="width:20px" colspan="2">1</td>
+        <td style="width:20px" colspan="2">2</td>
+        <td style="width:20px" colspan="2">3</td>
+        <td style="width:20px" colspan="2">4</td>
     </tr>
 </table>
 
@@ -211,6 +211,8 @@ DGIndex 的现代化替代品是 [D2VWitch](https://github.com/dubhater/D2VWitch
 pulldown flags 处理失败，可能是因为视频流破损、后期剪辑失误、超出 lsmas 处理能力等。  
 对于返回的 vfr clip 也需要仔细检查，看起来正常但不一定正确。  
 而且哪怕是 `repeat=1` 成功返回了 cfr clip，也要仔细检查帧顺序是否正确，如果出现问题可以从 [Github repo issues](https://github.com/AkarinVS/L-SMASH-Works/issues) 回报。
+
+在启用 `repeat` 时可以通过 frameprops `_EncodedFrameBottom` 和 `_EncodedFrameTop` 来查看当前帧由哪两场组成。同时 `.lwi` 文件中也记录了 rff 的信息，`Repeat=1` 为无 rff，`Repeat=2` 为 rff。
 
 总之，处理中一般应使用更为严格安全的 `repeat=1`（默认值），repeat 失败再使用 `repeat=0`。如果是查看老一些的脚本或使用旧版本的滤镜（vA.2 之前版本）时，你可能会发现 `repeat` 只有 True 与 False 两种，旧有的 True 就是现在的 `repeat=2`。
 
