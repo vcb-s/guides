@@ -28,7 +28,7 @@
 
 ### 样例
 
-在 release 中有 4 个不同的视频，可以与下面对照查看。
+在 [release](https://github.com/vcb-s/guides/releases/tag/%2310) 的 `30fps_sample.7z` 中有 4 个不同的视频，可以下载后与下面对照查看。
 
 *如果使用 Vapoursynth 查看，可以先阅读下面的 隔行扫描视频的读取 - LWLibavSource 部分。*
 
