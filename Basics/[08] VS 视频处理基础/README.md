@@ -6,6 +6,7 @@
 此处我们使用到的参数有以下几个：`zimg`对应的参数是`src_left`/`src_top`/`src_width`/`src_height`。`fmtconv`中对应的函数是`fmtc.resample`，参数分别对应`sx`/`sy`/`sh`/`sw`。这四个参数表示，输出结果对应着原图中的这样一个长方形区域——它左上顶点坐标是 $(src\\_left,src\\_top)$，宽为 $src\\_width$，高为 $src\\_height$。如下图所示：
 
 ![Figure 1](./Figure/Figure%201.png "采样区域图示")
+
 图中较大的长方形框是原始图像，较小的长方形框——也即**采样区域**，对应结果图像。  
 所以，如果想将图像向右平移10.5个像素，同时向下平移20个像素——此时我们的小方框顶点应该位于 $(-10.5,-20)$，所以对应的写法是`resize.Spline36(src_left=-10.5, src_top=-20)`。同样的，我们还可以使用这个方法进行裁切，比如原图是 $1920\times1080$，我想上切10像素，下切20像素，那么就是`resize.Spline36(src_top=10, src_height=1050)`。
 
