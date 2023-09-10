@@ -5,15 +5,18 @@
 要解释这个概念，要先从电视广播制式说起，世界上最常见的两种便是 NTSC 和 PAL，这些标准的制定与使用一定程度上受不同地区的家用交流电频率影响。
 
 - NTSC：1 秒 30 帧或 60 场，主要由家用交流电频率为 60 Hz 的北美与日本使用
-- PAL： 1 秒 25 帧或 50 场，主要由家用交流电频率为 50 Hz 的其他大部分国家地区使用，如大多数欧洲国家、中国
+- PAL： 1 秒 25 帧或 50 场，主要由家用交流电频率为 50 Hz 的其他大部分国家地区使用，如大多数欧洲国家和中国
 
 *由于我们主要说明的是日本动画等在日本播出的节目，所以下面如无特殊说明，介绍的均为 NTSC，两种制式的分别（如色彩）不再细说。*
 
-「场（field）」这个名词已经在前面的教程中出现过，而它正是隔行扫描的产物。让我们回到 NTSC 制定的时代，那时的显示器大多使用的是 CRT（阴极射线管），它的显像原理简单来说就是电子束打到荧光粉来发亮，且受到了交流电频率的影响。逐行扫描是从左上角开始，从左到右从上到下地逐步点亮，1 秒内要显示 30 帧，但由于荧光粉的亮度衰减，人眼看起来会产生闪烁。所以当时采用了先从上至下扫描奇数行组成一场，再从上至下扫描偶数行组成一场的方式，1 秒内显示 60 场，光暗交叉看起来要好上很多，这种扫描方式便是隔行扫描（如下图）。随着技术的发展，CRT 也被 LCD 代替，现在已经很少见到，但隔行扫描的视频却仍然常见。
+「场（field）」这个名词已经在前面的教程中出现过，而它正是因隔行扫描产生的概念。让我们回到 NTSC 制定的时代，那时的显示器大多使用的是 CRT（阴极射线管），它的显像原理简单来说就是电子束打到荧光粉来发亮，且受到了交流电频率的影响。  
+为什么没有使用逐行扫描呢？这是因为显像用的荧光粉的亮度会衰减。逐行扫描是从左到右从上到下地逐步点亮，人眼看起来有闪烁感。所以先从上至下扫描奇数行组成一场，再从上至下扫描偶数行组成一场的方式，光暗交叉看起来要好上很多，1 秒内要显示的从 30 帧变为了 60 场，这种扫描方式便是隔行扫描（如下图所示）。随着技术的发展，CRT 也被 LCD 代替，现在已经很少见到，但隔行扫描的视频却仍然常见。
 
 ![](./media/CRT_image_creation_animation.gif)
 
-我们将奇数场称之为上半场（Top Field），偶数场称之为下半场（Bottom Field），显示上高度为正常帧高度的一半，即在同等带宽（无压缩）下，以空间分辨率（spatial resolution）减半，换取时间分辨率（temporal resolution）加倍。虽然上下半场可以合并为 1 帧，但扫描时间并不相同，时间差为 1/59.94s，所以在两场合并的帧上可能会出现交错条纹，或者说拉丝（如下图），也就是交错（Comb），这也是隔行扫描的典型特征。
+我们将奇数场称之为上半场（Top Field），偶数场称之为下半场（Bottom Field），显示上高度为正常帧高度的一半，即在同等带宽（无压缩）下，以空间分辨率（spatial resolution）减半，换取时间分辨率（temporal resolution）加倍。虽然在展现上，上下半场可以合并为 1 帧，但扫描时间并不相同，时间差为 1/59.94s，所以在两场合并的帧上可能会出现交错条纹，或者说拉丝（如下图），也就是交错（Comb），这也是隔行扫描的典型特征。
+
+*注：请点开原图查看以获得正确的观看效果*
 
 ![](./media/interlaced.jpg)
 
@@ -25,9 +28,9 @@
 
 ### 样例
 
-下面的链接内有 5 个不同的视频，两个链接中的内容相同：
+在 release 中有 4 个不同的视频，可以与下面对照查看。
 
-[百度网盘](https://pan.baidu.com/s/1aqzgdKnwWgQDehU6RvnQBw?pwd=k5dz)、[OneDrive](https://1drv.ms/f/s!Ahb382-S7-UugZ5l3MZUYZcJsD1vfA?e=MWHAxe)
+*如果使用 Vapoursynth 查看，可以先阅读下面的 隔行扫描视频的读取 - LWLibavSource 部分。*
 
 #### sample1
 
@@ -81,49 +84,53 @@
 
 在视频的 24p 帧上添加一个 RFF（Repeat First Field）的 flag，播放设备在读取到这个 flag 的时候便会重复首场（TFF 时为顶场），一个正确的 repeat 如下表所示：
 
-<table width="220px">
-    <tr>
-        <td style="width:120px">Source Frame</td>
-        <td style="width:30px" colspan="2">0</td>
-        <td style="width:20px" colspan="3">1</td>
-        <td style="width:30px" colspan="2">2</td>
-        <td style="width:20px" colspan="3">3</td>
-    </tr>
-    <tr>
-        <td style="width:120px">TFF flag</td>
-        <td style="width:30px" colspan="2">1</td>
-        <td style="width:20px" colspan="3">1</td>
-        <td style="width:30px" colspan="2">0</td>
-        <td style="width:20px" colspan="3">0</td>
-    </tr>
-    <tr>
-        <td style="width:120px">RFF flag</td>
-        <td style="width:30px" colspan="2">0</td>
-        <td style="width:20px" colspan="3">1</td>
-        <td style="width:30px" colspan="2">0</td>
-        <td style="width:20px" colspan="3">1</td>
-    </tr>
-    <tr>
-        <td style="width:120px">Field</td>
-        <td style="width:10px">0t</td>
-        <td style="width:10px">0b</td>
-        <td style="width:10px">1t</td>
-        <td style="width:10px">1b</td>
-        <td style="width:10px">1t_r</td>
-        <td style="width:10px">2b</td>
-        <td style="width:10px">2t</td>
-        <td style="width:10px">3b</td>
-        <td style="width:10px">3t</td>
-        <td style="width:10px">3b_r</td>
-    </tr>
-    <tr>
-        <td style="width:120px">Decode Frame</td>
-        <td style="width:20px" colspan="2">0</td>
-        <td style="width:20px" colspan="2">1</td>
-        <td style="width:20px" colspan="2">2</td>
-        <td style="width:20px" colspan="2">3</td>
-        <td style="width:20px" colspan="2">4</td>
-    </tr>
+*注：此处应按照 PTS 顺序*
+
+*TFF flag = top_field_first; RFF flag = repeat_first_field*
+
+<table>
+  <tr align="center">
+    <td>Source Frame</td>
+    <td colspan="2">0</td>
+    <td colspan="3">1</td>
+    <td colspan="2">2</td>
+    <td colspan="3">3</td>
+  </tr>
+  <tr align="center">
+    <td>TFF flag</td>
+    <td colspan="2">1</td>
+    <td colspan="3">1</td>
+    <td colspan="2">0</td>
+    <td colspan="3">0</td>
+  </tr>
+  <tr align="center">
+    <td>RFF flag</td>
+    <td colspan="2">0</td>
+    <td colspan="3">1</td>
+    <td colspan="2">0</td>
+    <td colspan="3">1</td>
+  </tr>
+  <tr align="center">
+    <td>Field</td>
+    <td>0t</td>
+    <td>0b</td>
+    <td>1t</td>
+    <td>1b</td>
+    <td>1t_r</td>
+    <td>2b</td>
+    <td>2t</td>
+    <td>3b</td>
+    <td>3t</td>
+    <td>3b_r</td>
+  </tr>
+  <tr align="center">
+    <td>Present Frame</td>
+    <td colspan="2">0</td>
+    <td colspan="2">1</td>
+    <td colspan="2">2</td>
+    <td colspan="2">3</td>
+    <td colspan="2">4</td>
+  </tr>
 </table>
 
 相较于 hard telecine，此种方法是无损的，而且可以节省传输的流量。由于 pulldown flag 可以只添加在视频流的一部分帧，所以真实的视频流帧率可能是变化的（vfr）而非恒定的（cfr）。
@@ -138,7 +145,7 @@
 
 首先先看一套有点「老」的软件 DGMPGDec，这是 Donald A. Graft 基于 DVD2AVI 开发的自由软件。可以从 https://www.rationalqm.us/dgmpgdec/dgmpgdec.html 获取源代码和相应配套组件。仅适用于 MPEG-1 和 MPEG-2，主要是后者，常见的大多是 DVD 和 Transport Stream。
 
-*以下基于 v2.0.08*
+*以下基于 v2.0.0.8*
 
 包内对 vs 有用的只有 DGIndex 和 DGDecode，这里也只介绍我们可能会用到的 DGIndex 功能。
 
@@ -149,7 +156,13 @@ DGIndex 有一个 gui，基本操作是 `File - Open (F2)`，然后把需要加�
 - `.d2v` 中记录的源文件名是绝对路径
 - 音频文件名上标注了需要 delay 的时间，mux 时可能会用到
 
+![](./media/dg_00.jpg)
+
+![](./media/dg_01.jpg)
+
 之所以会 demux 音轨是因为 `Audio - Output Method` 默认是 `Demux All Tracks`，可以选择 `Disable` 不 demux 音轨（对应的是同目录配置文件 `DGIndex.ini` 中的 `Output_Method=0`）。
+
+![](./media/dg_02.jpg)
 
 还有一个可能用到的重要选项 `Video - Field Operation`，它只对含有 pulldown flags 的视频有意义。
 
@@ -159,6 +172,8 @@ DGIndex 有一个 gui，基本操作是 `File - Open (F2)`，然后把需要加�
 - NTSC Video：可略称为 Video，相当于 30p，通常表现为 30i、30p
 - Hybrid：film 与 video 的混合，可能是时间上的也可能是空间上的
 
+![](./media/dg_03.jpg)
+
 回到 `Field Operation`：
 
 1. Honor Pulldown Flags (Default)：模拟播放设备对标有 RFF 的场进行 repeat，返回 30fps clip。
@@ -166,6 +181,8 @@ DGIndex 有一个 gui，基本操作是 `File - Open (F2)`，然后把需要加�
 3. Force Film：将 24d 转换为 24p 并返回。
 
 设置 Field Operation 的工作流程一般是这样的，先使用 `Honor Pulldown Flags`，观察 Information 中的 `Video Type`
+
+![](./media/dg_04.jpg)
 
 1. 如果显示 NTSC 或 PAL 说明没有 pulldown flags，应继续使用之前生成的 d2v
 2. 如果显示 Film 达到 95% 及以上（100% 也可被称为 Pure Film，此时无百分比显示）就可以使用 `Force Film` 得到 24p 的 clip，重新生成 d2v
@@ -182,13 +199,24 @@ DGIndex 有一个 gui，基本操作是 `File - Open (F2)`，然后把需要加�
 
 #### 读取 d2v 文件
 
-d2v 文件结构可以从 `DGIndexManual.html` 中看，不再说明，主要说下怎么从 Vapoursynth 中加载 `.d2v`，有两种方法，一种是最近 port 的自带的 `dgdecode.MPEG2Source`，另一种是 `d2v.Source`。
+d2v 文件类似于 lsmas 的 lwi，这也是一个纯文本文件，可以打开看下。
+
+![](./media/dg_05.jpg)
+
+它记录的视频名是绝对路径，所以索引完就不要改变视频位置，要不然它会找不到。具体结构可以从 `DGIndexManual.html` 中看，不再说明，主要说下怎么从 Vapoursynth 中加载 `.d2v`，有两种方法，一种是最近 port 的自带的 `dgdecode.MPEG2Source`，另一种是 `d2v.Source`。
 
 DGIndex 的现代化替代品是 [D2VWitch](https://github.com/dubhater/D2VWitch)，与 `d2v.Source` 配套。
 
 两个滤镜使用都很常规，指定 d2v 路径即可。只是对于 Force Film 生成的 d2v，`d2v.Source` 需要指定 `rff=False` 否则会得到一个帧率正确帧数错误的 clip。
 
-*`dgdecode.MPEG2Source` 现在会在 clip 顶部与底部错误地各加 4px*
+如果你想使用 `dgdecode` 却不想把它放到默认加载的路径，可以使用 `LoadPlugin`：
+```python
+core.std.LoadPlugin("DGDecode.dll", forcens="dgdecode", forceid="dgdecode")
+```
+
+如果无法预览，可能是缺少 frameprops，可以使用 `std.SetFrameProps` 指定。d2vsource 则会添加需要的 frameprops 和 IPB 帧 type。
+
+*注：`dgdecode.MPEG2Source` 现在会在 clip 顶部与底部错误地各加 4px*
 
 #### 其他
 
@@ -214,7 +242,7 @@ pulldown flags 处理失败，可能是因为视频流破损、后期剪辑失�
 
 在启用 `repeat` 时可以通过 frameprops `_EncodedFrameBottom` 和 `_EncodedFrameTop` 来查看当前帧由哪两场组成。同时 `.lwi` 文件中也记录了 rff 的信息，`Repeat=1` 为无 rff，`Repeat=2` 为 rff。
 
-总之，处理中一般应使用更为严格安全的 `repeat=1`（默认值），repeat 失败再使用 `repeat=0`。如果是查看老一些的脚本或使用旧版本的滤镜（vA.2 之前版本）时，你可能会发现 `repeat` 只有 True 与 False 两种，旧有的 True 就是现在的 `repeat=2`。
+总之，处理中一般应使用更为严格安全的 `repeat=1`（默认值），repeat 失败再使用 `repeat=0`。如果是查看老一些的脚本或使用旧版本的滤镜（vA.2 之前版本）时，你可能会发现 `repeat` 只有 True 与 False 两种，旧有的 True 就是现在的 `repeat=2`。再老一些，`repeat` 默认是 false，现在 `repeat` 默认是 1…
 
 #### 检测是否为全程 soft pulldown（pure film）
 
@@ -288,7 +316,7 @@ res.set_output()
 - a60224：Avisynth 滤镜，目前没有 VS 移植
 - [IT](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-IT)
 
-在这，先简单介绍下 vivtc，tivtc 放到后续篇章中。
+在这先简单介绍下 vivtc，tivtc 的参数可以自行查阅 [Avisynth 的文档](http://avisynth.nl/index.php/TIVTC)。
 
 1. 场匹配（vfm）
 
