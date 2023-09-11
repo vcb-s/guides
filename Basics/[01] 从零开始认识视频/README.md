@@ -55,6 +55,7 @@ $$z = \frac{Z}{X+Y+Z}$$
     <img src="media/CIE-X-Y-Chromaticity-Diagram.svg" alt="CIE x, y chromaticity diagram">
     <figcaption>CIE x, y 色度图</figcaption>
 </figure>
+
 因此，对于任意的 XYZ 空间中的色点 $A=(X_a, Y_a, Z_a)$，相应的色度坐标 $a=(x_a, y_a, z_a)$ 是通过将线 $\bar{SA}$ 与  $X+Y+Z=1$ 相交得到的。那么最终 x,y 色度图只需要去除 $Z$ 分量 $z_a$ 即可得到，而这个结果就是著名的马蹄形 CIE x, y 色度分布图（见图 (c)）。马蹄形的区域里面表示着所有可见的颜色，其中上边沿一圈是各种波长的单色光对应的点。
 
 如上图所示 RGB 三种颜色就是色彩原色（color primaries）由这三个点构成的三角形内的色度都可以用三原色的不同配比组成。同理，CMY 三原色框选出来的三角形区域中的颜色也可以用这三原色通过该不同配比表示。这是由颜色的可线性叠加的性质造成的，也就是说任意从马蹄形区域中选三个不共线的点，就可以做三原色，表示三点框出来的三角形内的所有颜色。所以三原色是不唯一的。
@@ -69,6 +70,7 @@ $$z = \frac{Z}{X+Y+Z}$$
     <img src="media/CIExy1931_Rec_601.svg" alt="Rec. 601 chromaticity diagram">
     <figcaption>Rec. 601 色度图 625线（PAL和SECAM）显示为黑色；525线（NTSC SMPTE C primaries）显示为白色</figcaption>
 </figure>
+
 **Rec. 601** 标准，也就是标清 SDTV 用的颜色空间。可以看到，这个标准下，有两组原色，黑色框的顶点是 PAL 制式的原色，而白色框的顶点为 NTSC 制式的原色。对于制作 Rip 来说这个标准通常只会在 DVD 介质遇到。对于动画来说，特别是日本动画，一般是 NTSC 的标准。（注：这里的 NTSC 用的色域是由 Rec. 601 定义的，与下文 Rec. 709 用的 *primaries* 是一致的。但不同于我们一般说的 NTSC 1953 色域，NTSC 1953 要更古老。）
 
 ##### Rec. 709 标准
@@ -77,6 +79,7 @@ $$z = \frac{Z}{X+Y+Z}$$
     <img src="media/CIExy1931_Rec_709.svg" alt="Rec. 709 chromaticity diagram">
     <figcaption>Rec. 709 色度图</figcaption>
 </figure>
+
 **Rec. 709** 标准，高清 HDTV 用的颜色空间。他的色彩范围如图所示。HDTV 和 SDTV 是这样判断的：
 
 ```python
@@ -97,6 +100,7 @@ else:
     <img src="media/CIExy1931_Rec_2020.svg" alt="Rec. 2020 chromaticity diagram">
     <figcaption>Rec. 2020 色度图</figcaption>
 </figure>
+
 **Rec. 2020** 标准，超高清 UHDTV使用的颜色空间。
 
 如上文所述：只要是 2048 宽或者 1536 高以上，就可以判断为 UHD。Rec. 2020 这个框就明显大得多了，覆盖了更大的区域。不过可惜还没有多少电视能真的完全覆盖这个区域。
