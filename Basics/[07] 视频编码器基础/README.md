@@ -1074,6 +1074,10 @@ abr / vbr 就跳过了，和 x264 基本一致。
 分块方面的开销做到了非常高，由于这番预算不少，画面复杂，并且有电影感，为了保留画面噪点做了一些更改  
 当然，上面的参数真的非常，非常慢。。  
 
+再丢个通用点的 bdrip 参数：  
+
+`--deblock -1:-1 --preset slower --limit-tu 0 --rskip 0 --ctu 32 --crf 16 --pbratio 1.2 --cbqpoffs -3 --crqpoffs -3 --no-sao --max-tu-size 16 --qg-size 16 --me 3 --subme 5 --merange 32 --b-intra --no-amp --ref 5 --weightb --keyint 240 --min-keyint 1 --bframes 8 --aq-mode 3 --aq-strength 0.8 --rd 5 --psy-rd 1.7 --psy-rdoq 0.8 --rdoq-level 1 --rc-lookahead 80 --scenecut 40 --qcomp 0.65 --no-open-gop --vbv-bufsize 42000 --vbv-maxrate 35000 --no-strong-intra-smoothing --transfer bt709 --colorprim bt709 --colormatrix bt709 --range limited`
+
 再丢个 webrip 的：  
 `--preset veryslow --crf 18.5 --qcomp 0.65 --qg-size 16 --no-rect --no-amp --ctu 32 --limit-tu 3 --tu-intra-depth 3 --tu-inter-depth 3 --me star --subme 4 --no-rc-grain --merange 32 --no-open-gop --min-keyint 1 --ref 5 --keyint 240 --ipratio 1.2 --pbratio 1.3 --bframes 10 --aq-mode 1 --aq-strength 0.75 --rd 5 --deblock -1:-1 --colormatrix bt709 --rc-lookahead 80 --range limited --psy-rdoq 0.5 --rdoq-level 2 --psy-rd 1.5 --cbqpoffs -2 --crqpoffs -2 --no-strong-intra-smoothing --no-sao`
 
