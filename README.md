@@ -14,7 +14,7 @@
 
 ## 提示与说明
 
-1. 网页版教程界面现已开放：[https://guides-docusaurus.pages.dev/](https://guides-docusaurus.pages.dev/)。相比 GitHub 能避免一些渲染问题，带来更好的阅读体验。
+1. 网页版教程界面现已开放：[https://guides.vcb-s.com/](https://guides.vcb-s.com/)。相比 GitHub 能避免一些渲染问题，带来更好的阅读体验。
 
 2. 各章节的示例脚本、素材请到 [本仓库](https://github.com/vcb-s/guides) 相应目录和 [Releases](https://github.com/vcb-s/guides/releases) 获取。
 
