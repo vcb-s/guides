@@ -246,7 +246,7 @@ src8.set_output(1)
 
 + `EnableReEncode` 等
 
-    这些参数用于 Re-Encode 功能，具体见第 6 小节的介绍。
+    这些参数用于 Re-Encode 功能，具体见第 7 小节的介绍。
 
 ### (4). OKE运行任务
 
@@ -481,3 +481,37 @@ import pathlib
 path = pathlib.Path(a)
 res = mvf.VFRSplice([res_a, res_b], tcfile=str(path.with_suffix('.tcfile')))
 ```
+
+
+## 7. Re-Encode功能
+
+注意：本小节需要 OKE 版本 >= `9.0.0`
+
+OKE 支持重压片段 Re-Encode 功能，可以仅压制视频的部分片段，并和旧版压制成品进行合并。
+
+Re-Encode 功能需要使用单集配置文件，以下所有参数需要写到单集配置文件里，可以参考 OKEGui\examples\00001.m2ts.json。
+
++ `EnableReEncode`
+
+    设置为 `true` 时开启 Re-Encode 功能，后续所有参数仅在开启后生效。  
+    载入到任务列表后，会在任务类型里显示为 `ReEncode`。
+
++ `ReExtractSource`
+
+    是否重新从源文件抽取音轨、字幕轨等，默认为 `false`。
+
+    `false` 时，所有非视频内容将从旧版压制成品继承，json 里的音轨、字幕轨配置无效。不过仍然会重新获取章节，重新获取的章节仅用于生成 qpfile。此时要求旧版压制成品必须是 mkv 格式。
+
+    `true` 时，只有视频轨会从旧版压制成品获取，其他内容将根据 json 里的音轨、字幕轨配置重新获取，章节也会重新获取并封入成品。
+
++ `ReEncodeOldFile`
+
+    指定旧版压制成品的路径，支持相对路径和绝对路径，相对路径以源文件所在目录为基准。
+
++ `ReEncodeSliceArray`
+
+    这是一个列表，其中每一项是一段需要重压的区间范围。与 python 类似，区间是左闭右开。`begin` 默认为 0；`end` 可以填 -1，代表压到最后一帧。
+
+    区间之间可以不按顺序，可以连续，但不能有重叠。无需考虑关键帧问题，OKE 会自动将区间对齐到最近的关键帧来进行压制和拼接。
+
+    对齐关键帧可能会导致实际压制区间比指定的更宽一些，因此 vpy 脚本需要保证在指定区间之外，保持和旧版压制成品相同的处理。
