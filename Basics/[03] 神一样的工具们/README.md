@@ -276,9 +276,11 @@ aac 的编码，我们选择 qaac 编码器，模式选择 cvbr，码率根据�
 qaac 的命令行参数
 ```
 qaac -i -v 192 -q 2 --no-delay -o output.aac input.flac
-qaac -i -V 127 -q 2 --no-delay --ignorelength -o output.m4a input.wav
+qaac -i -V 127 -q 2 --no-delay -o output.m4a input.wav
 ```
-`-v` 参数指定 cvbr 模式的目标码率，`-V` 参数指定 tvbr 模式的目标质量。使用 wav 输入的时候推荐打开  `--ignorelength`。
+`-v` 参数指定 cvbr 模式的目标码率，`-V` 参数指定 tvbr 模式的目标质量。使用 wav 输入的时候推荐打开  `-i (--ignorelength)`。
+
+另外，无需纠结输出后缀名，默认情况下无论填写 `.aac` 还是 `.m4a`，输出文件都是经过 MP4 封装后的，这样有利于之后的播放和再次封装。
 
 你可以在这里下载 qaac：[https://github.com/nu774/qaac/releases](https://github.com/nu774/qaac/releases)。
 
