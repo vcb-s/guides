@@ -380,7 +380,7 @@ OKE 采用可选标签 `Optional` 来处理这个问题。对于每条音轨，�
     "Name" : "Main Audio"
 },{
     "OutputCodec" : "aac",
-    "Bitrate" : "192",
+    "Bitrate" : 192,
     "Name" : "Audio Commentary",
     "Optional" : true
 }]
