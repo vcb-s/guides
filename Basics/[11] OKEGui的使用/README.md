@@ -185,10 +185,10 @@ src8.set_output(1)
 
         封装格式，可选 `Default`、`Mka`、`External`、`ExtractOnly` 或 `Skip`。
 
-        默认为 `Default`，表示正常封装。  
-        `Mka` 表示额外封装在 MKA 文件中。  
-        `External` 表示外挂，会给文件名加上 CRC32，这个实际中已经不会使用。  
-        `ExtractOnly` 只做抽取。  
+        默认为 `Default`，表示随视频一起正常封装。  
+        `Mka` 表示封装在 MKA 文件中。  
+        `External` 表示外挂，会给文件名加上 CRC32。一般只在处理需要外挂音轨的 Menu 时使用。  
+        `ExtractOnly` 只做抽取，仅用于测试。  
         `Skip` 直接不抽取。  
 
     - `Language`
