@@ -100,8 +100,7 @@ core.max_cache_size = 8000
 
 <img src="./media/image01.png" />
 
-当然，现在不用这个 tag 了，“空闲内存数” 直接填任意小于 2000 的数就行。  
-大于 2000 的话 OKE 会在启动任务的时候检查系统是否有那么多空闲内存，在压制中途加任务时会带来一些不必要的麻烦。
+OKE 版本 >= `9.1.4` 时已完全移除该 tag 和“空闲内存数”选项。
 
 #### RP Checker
 
@@ -150,7 +149,7 @@ src8.set_output(1)
 
 + `EncoderType`
 
-    编码器类型，可以选 `x264`、`x265`、`svtav1`。
+    编码器类型，可以选 `x264`、`x265`、`svtav1`、`nvencc`。
 
 + `Encoder`
 
@@ -211,6 +210,15 @@ src8.set_output(1)
 
     与音轨类似，有 `MuxOption`，`Language`，`Name` 子项。
 
++ `SkipAllAudioTracks`
+
+    是否跳过所有音轨，可选 `true` 或 `false`，默认为 `false`。设置为 `true` 时，将忽略 `AudioTracks` 字段，跳过处理所有音轨。
+
++ `SkipAllSubtitleTracks`
+
+    是否跳过所有字幕轨，可选 `true` 或 `false`，默认为 `false`。设置为 `true` 时，将忽略 `SubtitleTracks` 字段，跳过处理所有字幕轨。  
+    由于 eac3to 的显示 bug，在输入视频含有较多字幕或者含有中文语言标签的字幕时，无法正常解析所有轨道，可以使用该功能跳过处理字幕轨道。
+
 + `InputScript`
 
     输入 vpy 脚本的文件名。  
@@ -258,6 +266,8 @@ src8.set_output(1)
 OKE 任务需要以一个完整视频为基本单位。遇到肉酱和连体，需要先转为 1 集一个 mkv 文件来压制。
 
 用法比较简单：
+
+（OKE 版本 >= `9.1.4` 时可以直接将 json 配置文件拖到 OKE 上，不用先点“新建任务”）
 
 <img src="./media/image02.jpg" />
 <img src="./media/image03.png" />
@@ -376,7 +386,7 @@ OKE 提供了路径缩减功能，可以在全局设置里启用，当前默认�
 
 + `空闲内存数`
 
-    该功能已经弃用，建议直接填 0。
+    该功能已经弃用，建议直接填 0。OKE 版本 >= `9.1.4` 时已完全移除该选项。
 
 
 ## 3. 音轨的处理
