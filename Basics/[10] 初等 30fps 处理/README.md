@@ -54,7 +54,7 @@
 
 ### 总结
 
-本节前文中的种类命名参考了 mawen1250 的 [ivtc_txt60mc使用教程 - 对于24t/24d+30i/30p混合源的处理](https://www.nmm-hd.org/newbbs/viewtopic.php?f=7&t=1367)，在学术上也许不严谨，但可以方便讨论。虽然有的未在样例中出现，但大概总结一下：
+本节前文中的种类命名参考了 mawen1250 的 [ivtc_txt60mc使用教程 - 对于24t/24d+30i/30p混合源的处理](https://www.nmm-hd.org/newbbs/viewtopic.php?f=7&t=1367)（如果论坛仍处于维护状态，可尝试访问[此快照](https://web.archive.org/web/20240117181905/https://www.nmm-hd.org/newbbs/viewtopic.php?f=7&t=1367)），在学术上也许不严谨，但可以方便讨论。虽然有的未在样例中出现，但大概总结一下：
 
 - 24p：逐行扫描，每秒 24/1.001 帧，每帧无交错
 - 60p：逐行扫描，每秒 60/1.001 帧，每帧无交错

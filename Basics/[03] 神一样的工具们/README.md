@@ -258,7 +258,7 @@ x264 基本上没得选，基本只能 tmod：[https://github.com/jpsdr/x264/rel
 
 <img src="./media/image13.png" />
 
-更详细的说明可以参考[整理规范](https://github.com/vcb-s/VCB-S_Collation/blob/master/specification.md)。
+更详细的说明可以参考[整理规范](https://github.com/vcb-s/VCB-S_Collation/blob/2cb203644dd4a05335fe4551b1086304f9f623a9/%E5%8E%86%E5%8F%B2%E5%AD%98%E6%A1%A3/specification.md)。
 
 简单来说，如果原盘中为无损音轨，正片和特典的主音轨需要 flac 编码，而评论轨和真人特典的音轨需要 aac 编码；如果原盘中为有损音轨，在码率不太高时保留原样，码率较高时转为 aac 编码。
 
